@@ -1,0 +1,17 @@
+{
+  "name": "finversion",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "build:core": "turbo build --filter=@fv-ui/core",
+    "build:pro": "turbo build --filter=@fv-ui/pro",
+    "build:app": "turbo build --filter=finversion",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.4.0"
+  }
+}

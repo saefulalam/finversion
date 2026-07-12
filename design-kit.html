@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinVersion — UI Design Kit</title>
+<style>
+  :root {
+    --bg-body: #EAEFF3;
+    --bg-card: linear-gradient(145deg, rgba(255,255,255,0.75) 0%, rgba(243,246,249,0.45) 100%);
+    --bg-item: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(245,247,250,0.7) 100%);
+    --text-primary: #1D1D1F;
+    --text-secondary: #6E6E73;
+    --text-tertiary: #86868B;
+
+    --accent: #0071E3;
+    --accent-gradient: linear-gradient(180deg, #3897FF 0%, #0071E3 100%);
+    --accent-soft: rgba(0,113,227,0.08);
+
+    --success-gradient: linear-gradient(180deg, #4DE077 0%, #24B049 100%);
+    --warning-gradient: linear-gradient(180deg, #FFB340 0%, #E68A00 100%);
+    --danger-gradient: linear-gradient(180deg, #FF6961 0%, #D7261E 100%);
+
+    --border-outer: rgba(0,0,0,0.06);
+    --border-inner: rgba(255,255,255,0.9);
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-xl: 30px;
+
+    --shadow-spatial-card:
+      0 1px 2px rgba(0,0,0,0.02),
+      0 12px 30px rgba(0,0,0,0.06),
+      0 25px 60px rgba(0,0,0,0.08),
+      inset 0 1px 1px var(--border-inner),
+      inset 0 -1px 2px rgba(0,0,0,0.03);
+
+    --shadow-spatial-item:
+      0 4px 10px rgba(0,0,0,0.03),
+      0 1px 2px rgba(0,0,0,0.02),
+      inset 0 1px 0px #ffffff;
+
+    --shadow-spatial-btn:
+      0 4px 12px rgba(0,113,227,0.2),
+      inset 0 1.5px 1px rgba(255,255,255,0.4),
+      inset 0 -1.5px 1px rgba(0,0,0,0.15);
+
+    --shadow-spatial-btn-secondary:
+      0 4px 10px rgba(0,0,0,0.04),
+      0 1px 2px rgba(0,0,0,0.03),
+      inset 0 1px 1px rgba(255,255,255,0.8),
+      inset 0 -1px 1px rgba(0,0,0,0.05);
+
+    --shadow-inset-pod:
+      inset 0 2px 4px rgba(0,0,0,0.06),
+      0 1px 1px rgba(255,255,255,0.8);
+  }
+
+  [data-theme="dark"] {
+    --bg-body: #0E0E10;
+    --bg-card: linear-gradient(145deg, rgba(32,32,36,0.75) 0%, rgba(22,22,24,0.5) 100%);
+    --bg-item: linear-gradient(180deg, rgba(42,42,46,0.6) 0%, rgba(30,30,34,0.5) 100%);
+    --text-primary: #F5F5F7;
+    --text-secondary: #A1A1A6;
+    --text-tertiary: #6E6E73;
+
+    --accent-gradient: linear-gradient(180deg, #54A6FF 0%, #0071E3 100%);
+
+    --border-outer: rgba(0,0,0,0.4);
+    --border-inner: rgba(255,255,255,0.12);
+
+    --shadow-spatial-card:
+      0 20px 50px rgba(0,0,0,0.5),
+      0 4px 12px rgba(0,0,0,0.3),
+      inset 0 1px 1px var(--border-inner),
+      inset 0 -1px 2px rgba(0,0,0,0.5);
+
+    --shadow-spatial-item:
+      0 4px 10px rgba(0,0,0,0.2),
+      inset 0 1px 0px rgba(255,255,255,0.05);
+
+    --shadow-spatial-btn:
+      0 6px 16px rgba(0,113,227,0.3),
+      inset 0 1.5px 1px rgba(255,255,255,0.3),
+      inset 0 -1.5px 1px rgba(0,0,0,0.3);
+
+    --shadow-spatial-btn-secondary:
+      0 4px 10px rgba(0,0,0,0.2),
+      inset 0 1px 1px rgba(255,255,255,0.08),
+      inset 0 -1px 1px rgba(0,0,0,0.3);
+
+    --shadow-inset-pod:
+      inset 0 2px 4px rgba(0,0,0,0.3),
+      0 1px 1px rgba(255,255,255,0.02);
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 90px 20px 60px;
+    transition: background-color 0.5s cubic-bezier(0.25,1,0.5,1), color 0.5s cubic-bezier(0.25,1,0.5,1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+  }
+
+  .wrap { width: 100%; max-width: 760px; }
+
+  .hero-head { text-align: center; margin-bottom: -8px; }
+  .eyebrow {
+    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+    color: #ffffff; background: var(--accent-gradient);
+    padding: 6px 16px; border-radius: 999px; margin-bottom: 18px;
+    box-shadow: var(--shadow-spatial-btn);
+  }
+  .hero-head h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.8px; margin: 0 0 10px; }
+  .hero-head p { font-size: 16px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; }
+
+  section { width: 100%; }
+  .section-head { margin-bottom: 20px; padding-left: 4px; }
+  .section-head h2 { margin: 0 0 6px; font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+  .section-head span { color: var(--text-secondary); font-size: 14px; }
+
+  .card {
+    background: var(--bg-card);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-inner);
+    box-shadow: var(--shadow-spatial-card);
+    padding: 28px;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.25,1,0.5,1), box-shadow 0.4s cubic-bezier(0.25,1,0.5,1);
+  }
+  .card:hover { transform: translateY(-2px); }
+
+  /* ===== Token swatches ===== */
+  .token-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .swatch {
+    border-radius: var(--radius-md); overflow: hidden;
+    background: var(--bg-item); box-shadow: var(--shadow-spatial-item);
+    border: 1px solid var(--border-inner);
+  }
+  .swatch-color { height: 56px; }
+  .swatch-label { padding: 12px 14px; }
+  .swatch-label b { display: block; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+  .swatch-label span { color: var(--text-tertiary); font-family: ui-monospace, monospace; font-size: 11px; }
+
+  /* ===== Folder icon (signature element) ===== */
+  .folder-icon { position: relative; width: 84px; height: 66px; flex-shrink: 0; }
+  .folder-icon .back {
+    position: absolute; inset: 0; border-radius: 12px;
+    background: linear-gradient(160deg, #3a3a3c, #17171a);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.14), 0 6px 14px rgba(0,0,0,0.2);
+  }
+  .folder-icon .sheet {
+    position: absolute; top: -8px; left: 16px; width: 40px; height: 46px;
+    background: linear-gradient(180deg, #fdfdfd, #e9e9ec);
+    border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  }
+  .folder-icon .sheet:nth-child(2) { left: 22px; top: -4px; transform: rotate(-3deg); }
+  .folder-icon .sheet:nth-child(3) { left: 28px; top: 0; transform: rotate(-6deg); }
+  .folder-icon .front {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 44px; border-radius: 12px;
+    background: linear-gradient(180deg, rgba(70,70,74,0.55), rgba(20,20,22,0.85));
+    backdrop-filter: blur(2px);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.15);
+  }
+  .folder-icon.gradient-blue .back { background: linear-gradient(160deg, #4FA6FB, #0040C1); }
+  .folder-icon.gradient-blue .front { background: linear-gradient(180deg, rgba(180,215,255,0.35), rgba(0,40,120,0.75)); }
+  .folder-icon.gradient-coral .back { background: linear-gradient(160deg, #FF6B57, #B0182A); }
+  .folder-icon.gradient-coral .front { background: linear-gradient(180deg, rgba(255,200,190,0.35), rgba(110,10,20,0.75)); }
+
+  .folder-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  .folder-card {
+    background: var(--bg-item); border: 1px solid var(--border-inner);
+    box-shadow: var(--shadow-spatial-item);
+    border-radius: var(--radius-lg); padding: 20px;
+    transition: transform 0.3s cubic-bezier(0.25,1,0.5,1);
+  }
+  .folder-card:hover { transform: translateY(-3px); }
+  .folder-card .folder-icon { margin-bottom: 18px; }
+  .folder-card h4 { font-size: 14px; font-weight: 600; margin: 0 0 2px; }
+  .folder-card p { font-size: 12px; color: var(--text-tertiary); margin: 0; }
+
+  /* ===== File browser ===== */
+  .browser { display: grid; grid-template-columns: 220px 1fr; gap: 0; overflow: hidden; padding: 0; }
+  .browser-side { padding: 20px 14px; border-right: 1px solid var(--border-outer); }
+  .browser-side .search {
+    background: var(--bg-item); box-shadow: var(--shadow-inset-pod);
+    border-radius: var(--radius-sm); font-size: 13px; color: var(--text-tertiary);
+    padding: 9px 12px; margin-bottom: 16px;
+  }
+  .tree-item {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; padding: 8px 10px; border-radius: 8px; color: var(--text-secondary);
+    margin-bottom: 3px;
+  }
+  .tree-item.active { background: var(--accent-gradient); color: #fff; font-weight: 600; box-shadow: var(--shadow-spatial-btn); }
+  .tree-item .count {
+    font-size: 11px; background: var(--bg-item); color: var(--text-tertiary);
+    padding: 2px 8px; border-radius: 999px; box-shadow: var(--shadow-spatial-item);
+  }
+  .tree-item.active .count { background: rgba(255,255,255,0.25); color: #fff; box-shadow: none; }
+  .tree-indent { padding-left: 22px; }
+
+  .browser-main { padding: 24px; }
+  .browser-main .breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 18px; }
+  .browser-main .breadcrumb b { color: var(--text-primary); font-weight: 600; }
+  .file-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-radius: var(--radius-md); margin-bottom: 8px;
+    background: var(--bg-item); box-shadow: var(--shadow-spatial-item); font-size: 13px;
+  }
+  .file-name { display: flex; align-items: center; gap: 10px; color: var(--text-primary); font-weight: 500; }
+  .file-name .dot { width: 8px; height: 8px; border-radius: 2px; background: var(--accent-gradient); }
+  .file-meta { display: flex; align-items: center; gap: 8px; color: var(--text-tertiary); font-size: 12px; }
+  .avatar { width: 22px; height: 22px; border-radius: 50%; background: linear-gradient(145deg,#FF9F0A,#B0182A); box-shadow: var(--shadow-spatial-item); }
+
+  /* ===== Dark checkpoint panel ===== */
+  .dark-panel { background: #0E0E10; color: #fff; }
+  .dark-panel h3 { font-size: 20px; font-weight: 700; margin: 0 0 20px; }
+  .version-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .v-card {
+    background: linear-gradient(180deg, rgba(42,42,46,0.7), rgba(24,24,26,0.6));
+    border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  .v-card .badge-dot {
+    width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(160deg,#3a3a3e,#1c1c1e);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.12); margin-bottom: 26px;
+  }
+  .v-card h5 { color: #fff; font-size: 14px; font-weight: 600; margin: 0 0 2px; }
+  .v-card span { color: #8a8a8f; font-size: 12px; }
+  .v-card.wide { grid-column: span 2; display: flex; align-items: center; justify-content: space-between; }
+  .v-card.wide .pill {
+    width: 46px; height: 46px; border-radius: 50%; border: 2px solid #38383c;
+    display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: 700;
+    box-shadow: var(--shadow-inset-pod);
+  }
+  .v-card.checkpoint { grid-column: span 2; display: flex; align-items: center; justify-content: space-between; }
+  .v-card.checkpoint .progress { width: 130px; height: 4px; background: #2a2a2d; border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
+  .v-card.checkpoint .progress i { display: block; width: 62%; height: 100%; background: var(--accent-gradient); }
+  .v-card.checkpoint .go {
+    width: 42px; height: 42px; border-radius: 50%; background: var(--accent-gradient);
+    display: flex; align-items: center; justify-content: center; color: #fff;
+    box-shadow: var(--shadow-spatial-btn);
+  }
+
+  /* ===== Date picker ===== */
+  .picker-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .picker-head .icon-btn {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--bg-item);
+    box-shadow: var(--shadow-spatial-item);
+    display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text-secondary);
+  }
+  .picker-head h4 { font-size: 15px; font-weight: 700; }
+  .picker-dow { display: grid; grid-template-columns: repeat(7,1fr); gap: 6px; margin-bottom: 8px; }
+  .picker-dow span { text-align: center; font-size: 11px; color: var(--text-tertiary); font-weight: 600; }
+  .picker-month { font-size: 12px; font-weight: 700; color: var(--text-secondary); margin: 14px 0 8px; }
+  .picker-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 6px; }
+  .picker-day {
+    aspect-ratio: 1; border-radius: 10px; background: var(--bg-item);
+    box-shadow: var(--shadow-spatial-item);
+    display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--text-primary);
+  }
+  .picker-day.muted { color: var(--text-tertiary); box-shadow: none; background: transparent; }
+  .picker-day.range { background: var(--accent-gradient); color: #fff; border-radius: 8px; box-shadow: var(--shadow-spatial-btn); }
+  .picker-day.range.start { border-radius: 10px 0 0 10px; }
+  .picker-day.range.end { border-radius: 0 10px 10px 0; }
+
+  /* ===== Stacked status card ===== */
+  .stack-wrap { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+  .add-card { width: 200px; text-align: center; padding: 20px; }
+  .add-card .icon-badge {
+    width: 44px; height: 44px; border-radius: 50%; margin: 0 auto 14px;
+    background: linear-gradient(145deg, #6D5DF6, #C13584);
+    display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px;
+    box-shadow: var(--shadow-spatial-btn);
+  }
+  .add-card p { font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+
+  .stack { position: relative; width: 200px; height: 190px; }
+  .stack-layer {
+    position: absolute; left: 0; right: 0; border-radius: var(--radius-lg);
+    padding: 10px 16px; font-size: 12px; font-weight: 700; color: #fff;
+    display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  }
+  .stack-layer.l1 { top: 0; height: 46px; background: linear-gradient(90deg,#4B3FA0,#7A4FB8); z-index: 1; }
+  .stack-layer.l2 { top: 20px; height: 46px; background: linear-gradient(90deg,#B8306A,#D8506A); z-index: 2; }
+  .stack-main {
+    position: absolute; top: 40px; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(160deg,#2a1810,#0d0704);
+    border-radius: var(--radius-lg); padding: 16px; z-index: 3;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.1);
+  }
+  .stack-main .edit {
+    position: absolute; top: 14px; right: 14px; width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 11px;
+  }
+  .stack-main .label { color: #d8b9a3; font-size: 11px; margin-bottom: 10px; }
+  .stack-main .amount { color: #fff; font-size: 20px; font-weight: 700; margin-bottom: 2px; }
+  .stack-main .sub { color: #a68a78; font-size: 11px; }
+  .stack-caption {
+    text-align: center; margin-top: 12px; font-size: 12px; color: var(--text-secondary);
+    background: var(--bg-item); border-radius: 999px; padding: 7px 14px; display: inline-block;
+    box-shadow: var(--shadow-spatial-item);
+  }
+
+  /* ===== Checklist ===== */
+  .checklist { display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+  .check-item {
+    display: flex; align-items: center; gap: 16px; padding: 14px 18px;
+    background: var(--bg-item); border-radius: var(--radius-md); box-shadow: var(--shadow-spatial-item);
+    border: 1px solid var(--border-inner);
+    transition: all 0.3s cubic-bezier(0.25,1,0.5,1);
+  }
+  .check-item .box {
+    width: 24px; height: 24px; border-radius: 50%; background: var(--bg-body);
+    box-shadow: var(--shadow-inset-pod);
+    display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: transparent;
+    flex-shrink: 0;
+  }
+  .check-item span { font-size: 15px; font-weight: 500; }
+  .check-item.done { opacity: 0.85; }
+  .check-item.done .box {
+    background: var(--success-gradient); color: #fff;
+    box-shadow: 0 4px 10px rgba(52,199,89,0.35), inset 0 1.5px 1px rgba(255,255,255,0.4);
+  }
+  .check-item.done span { text-decoration: line-through; color: var(--text-tertiary); }
+  .checklist-footer { display: flex; justify-content: flex-end; }
+
+  /* ===== Buttons & badges ===== */
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    border: none; padding: 12px 22px; border-radius: var(--radius-xl);
+    font-size: 15px; font-weight: 700; letter-spacing: -0.2px; cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25,1,0.5,1);
+    display: inline-flex; align-items: center; justify-content: center; outline: none;
+    font-family: inherit;
+  }
+  .btn:active { transform: scale(0.97) translateY(1px); }
+  .btn.primary {
+    background: var(--accent-gradient); color: #fff; box-shadow: var(--shadow-spatial-btn);
+    border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(0,0,0,0.2);
+  }
+  .btn.primary:hover { filter: brightness(1.05); }
+  .btn.ghost, .btn:not(.primary) {
+    background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(242,244,247,0.85) 100%);
+    color: var(--text-primary); box-shadow: var(--shadow-spatial-btn-secondary);
+    border: 1px solid rgba(0,0,0,0.04); border-top: 1px solid rgba(255,255,255,0.6);
+  }
+  [data-theme="dark"] .btn.ghost, [data-theme="dark"] .btn:not(.primary) {
+    background: linear-gradient(180deg, rgba(54,54,58,0.85) 0%, rgba(38,38,42,0.85) 100%);
+    color: var(--text-primary); border: 1px solid rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .badge {
+    padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 0.2px;
+    box-shadow: var(--shadow-spatial-item); border: 1px solid var(--border-inner);
+    display: inline-flex; align-items: center; text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  }
+  .badge.success { background: var(--success-gradient); color: #fff; }
+  .badge.warning { background: var(--warning-gradient); color: #fff; }
+  .badge.danger { background: var(--danger-gradient); color: #fff; }
+  .badge.accent { background: var(--accent-gradient); color: #fff; }
+
+  .theme-trigger { position: fixed; top: 24px; right: 24px; z-index: 999; }
+
+  footer { text-align: center; color: var(--text-tertiary); font-size: 13px; font-weight: 500; }
+
+  @media (max-width: 760px) {
+    .token-grid { grid-template-columns: repeat(2,1fr); }
+    .folder-grid { grid-template-columns: repeat(2,1fr); }
+    .browser { grid-template-columns: 1fr; }
+    .browser-side { display: none; }
+    .version-grid { grid-template-columns: 1fr; }
+    .v-card.wide, .v-card.checkpoint { grid-column: span 1; }
+    .hero-head h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="btn theme-trigger" onclick="toggleTheme()" id="themeBtn">&#127769; Dark mode</button>
+
+<div class="hero-head wrap">
+  <span class="eyebrow">Design system</span>
+  <h1>FinVersion UI Design Kit</h1>
+  <p>Komponen visual dengan bahasa desain spasial 3D ala Apple — glass, layered shadow, gradient tactile.</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Warna</h2><span>Token inti dengan gradasi</span></div>
+    <div class="token-grid">
+      <div class="swatch"><div class="swatch-color" style="background: linear-gradient(180deg,#3897FF,#0071E3)"></div><div class="swatch-label"><b>Accent</b><span>#0071E3</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background: linear-gradient(180deg,#4DE077,#24B049)"></div><div class="swatch-label"><b>Success</b><span>#34C759</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background: linear-gradient(180deg,#FFB340,#E68A00)"></div><div class="swatch-label"><b>Warning</b><span>#FF9F0A</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background: linear-gradient(180deg,#FF6961,#D7261E)"></div><div class="swatch-label"><b>Danger</b><span>#FF3B30</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#1D1D1F"></div><div class="swatch-label"><b>Text primary</b><span>#1D1D1F</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#EAEFF3"></div><div class="swatch-label"><b>BG body</b><span>#EAEFF3</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Folder icon</h2><span>Elemen signature, glossy dan gradient</span></div>
+    <div class="folder-grid">
+      <div class="folder-card"><div class="folder-icon"><div class="back"></div><div class="sheet"></div><div class="sheet"></div><div class="sheet"></div><div class="front"></div></div><h4>Onboarding</h4><p>15 files</p></div>
+      <div class="folder-card"><div class="folder-icon gradient-blue"><div class="back"></div><div class="sheet"></div><div class="sheet"></div><div class="sheet"></div><div class="front"></div></div><h4>Skenario Q3</h4><p>8 checkpoint</p></div>
+      <div class="folder-card"><div class="folder-icon gradient-coral"><div class="back"></div><div class="sheet"></div><div class="sheet"></div><div class="sheet"></div><div class="front"></div></div><h4>Budget final</h4><p>2 386 files</p></div>
+      <div class="folder-card"><div class="folder-icon"><div class="back"></div><div class="sheet"></div><div class="sheet"></div><div class="sheet"></div><div class="front"></div></div><h4>Integrations</h4><p>5 files</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>File browser</h2><span>Sidebar plus daftar file mengambang</span></div>
+    <div class="card browser">
+      <div class="browser-side">
+        <div class="search">Cari...</div>
+        <div class="tree-item active">General knowledge <span class="count">10</span></div>
+        <div class="tree-item tree-indent">Onboarding <span class="count">3</span></div>
+        <div class="tree-item tree-indent">Integrations <span class="count">5</span></div>
+        <div class="tree-item">Documents</div>
+        <div class="tree-item">Team interviews</div>
+      </div>
+      <div class="browser-main">
+        <div class="breadcrumb"><b>General knowledge</b> / Onboarding</div>
+        <div class="file-row"><div class="file-name"><span class="dot"></span>Budget-2026-Q3.xlsx</div><div class="file-meta"><div class="avatar"></div>rina@finversion.app</div></div>
+        <div class="file-row"><div class="file-name"><span class="dot"></span>Product-Roadmap.docx</div><div class="file-meta"><div class="avatar"></div>andi@finversion.app</div></div>
+        <div class="file-row"><div class="file-name"><span class="dot"></span>Skenario-optimis.xlsx</div><div class="file-meta"><div class="avatar"></div>rina@finversion.app</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Panel riwayat versi</h2><span>Dark mode, kartu ringkas checkpoint</span></div>
+    <div class="card dark-panel">
+      <h3>Checkpoints</h3>
+      <div class="version-grid">
+        <div class="v-card"><div class="badge-dot"></div><h5>Skenario optimis</h5><span>4 checkpoint</span></div>
+        <div class="v-card"><div class="badge-dot"></div><h5>Skenario dasar</h5><span>4 checkpoint</span></div>
+        <div class="v-card wide"><div><h5>Rekonsiliasi Q3</h5><span>Setiap 4 hari</span></div><div class="pill">0</div></div>
+        <div class="v-card checkpoint">
+          <div><h5>Menyimpan checkpoint</h5><div class="progress"><i></i></div><span>COGS Q3 &middot; sedang diproses</span></div>
+          <div class="go">&#8594;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Filter rentang checkpoint</h2><span>Date picker spasial</span></div>
+    <div class="card" style="max-width:420px;">
+      <div class="picker-head">
+        <div class="icon-btn">&#10005;</div>
+        <h4>Pilih rentang tanggal</h4>
+        <div class="icon-btn">&#128197;</div>
+      </div>
+      <div class="picker-dow"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
+      <div class="picker-month">Jul</div>
+      <div class="picker-grid">
+        <div class="picker-day muted"></div><div class="picker-day muted"></div>
+        <div class="picker-day">3</div><div class="picker-day">4</div><div class="picker-day">5</div><div class="picker-day">6</div><div class="picker-day">7</div>
+        <div class="picker-day">8</div><div class="picker-day">9</div><div class="picker-day">10</div><div class="picker-day">11</div><div class="picker-day">12</div>
+        <div class="picker-day">13</div>
+        <div class="picker-day range start">14</div><div class="picker-day range">15</div><div class="picker-day range">16</div><div class="picker-day range">17</div><div class="picker-day range end">18</div>
+        <div class="picker-day">19</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Status skenario</h2><span>Kartu bertumpuk gaya wallet</span></div>
+    <div class="stack-wrap">
+      <div class="card add-card">
+        <div class="icon-badge">+</div>
+        <p>Tambah skenario baru</p>
+        <button class="btn primary" style="width:100%;">+ Tambah</button>
+      </div>
+      <div>
+        <div class="stack">
+          <div class="stack-layer l1">&#128274; Terkunci</div>
+          <div class="stack-layer l2">&#128274; Terkunci</div>
+          <div class="stack-main">
+            <div class="edit">&#9998;</div>
+            <div class="label">&#10052; Versi dibekukan</div>
+            <div class="amount">48 checkpoint</div>
+            <div class="sub">Total riwayat</div>
+          </div>
+        </div>
+        <div class="stack-caption">Skenario Q3 — arsip</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Manajemen skenario</h2><span>Checklist review sebelum merge</span></div>
+    <div class="card">
+      <div class="checklist">
+        <div class="check-item done"><div class="box">&#10003;</div><span>Cek ulang formula COGS</span></div>
+        <div class="check-item done"><div class="box">&#10003;</div><span>Bandingkan versi A dan B</span></div>
+        <div class="check-item"><div class="box"></div><span>Selesaikan konflik sel B2</span></div>
+        <div class="check-item done"><div class="box">&#10003;</div><span>Review oleh manager</span></div>
+        <div class="check-item"><div class="box"></div><span>Approve merge ke main</span></div>
+      </div>
+      <div class="checklist-footer"><button class="btn">Tambah/Edit item</button></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head"><h2>Tombol dan badge</h2><span>Interaksi tactile</span></div>
+    <div class="row" style="margin-bottom:16px;">
+      <button class="btn primary">Buat skenario baru</button>
+      <button class="btn ghost">Kembalikan versi ini</button>
+      <button class="btn">Bandingkan versi</button>
+    </div>
+    <div class="row">
+      <span class="badge success">Tersimpan</span>
+      <span class="badge warning">Perlu ditinjau</span>
+      <span class="badge danger">Konflik terdeteksi</span>
+      <span class="badge accent">Skenario aktif</span>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">FinVersion UI Design Kit — bahasa desain spasial 3D ala Apple.</footer>
+
+<script>
+function toggleTheme() {
+  const root = document.documentElement;
+  const btn = document.getElementById('themeBtn');
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    root.setAttribute('data-theme', 'light');
+    btn.innerHTML = '&#127769; Dark mode';
+  } else {
+    root.setAttribute('data-theme', 'dark');
+    btn.innerHTML = '&#9728;&#65039; Light mode';
+  }
+}
+</script>
+
+</body>
+</html>
