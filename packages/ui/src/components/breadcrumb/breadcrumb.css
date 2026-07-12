@@ -1,0 +1,27 @@
+.fv-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.fv-breadcrumb__item {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.fv-breadcrumb__item:hover {
+  color: var(--accent);
+}
+
+.fv-breadcrumb__item.active {
+  color: var(--text-primary);
+  pointer-events: none;
+}
+
+.fv-breadcrumb__sep {
+  color: var(--text-tertiary);
+  font-size: 13px;
+}

@@ -1,0 +1,43 @@
+.fv-input {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 500;
+  background: var(--bg-item);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-inset-pod);
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s;
+  width: 100%;
+  font-family: inherit;
+}
+
+.fv-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-inset-pod);
+}
+
+.fv-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fv-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.fv-input--sm {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.fv-input--lg {
+  padding: 14px 20px;
+  font-size: 17px;
+}
+
+[data-fv-theme="dark"] .fv-input {
+  border: 1px solid var(--border-outer);
+}

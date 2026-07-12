@@ -1,0 +1,40 @@
+.fv-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: var(--shadow-spatial-item);
+  border: 2px solid var(--border-inner);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.fv-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fv-avatar--sm {
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+}
+
+.fv-avatar--lg {
+  width: 56px;
+  height: 56px;
+  font-size: 18px;
+}
+
+.fv-avatar--xl {
+  width: 72px;
+  height: 72px;
+  font-size: 22px;
+}

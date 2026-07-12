@@ -1,0 +1,64 @@
+.fv-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fv-accordion__item {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px) saturate(200%);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-spatial-item);
+  overflow: hidden;
+}
+
+.fv-accordion__trigger {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.fv-accordion__trigger:hover {
+  background: var(--accent-soft);
+}
+
+.fv-accordion__trigger i {
+  transition: transform 0.3s cubic-bezier(0.25,1,0.5,1);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.fv-accordion__item.open .fv-accordion__trigger i {
+  transform: rotate(180deg);
+}
+
+.fv-accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.25,1,0.5,1);
+}
+
+.fv-accordion__item.open .fv-accordion__content {
+  max-height: 500px;
+}
+
+.fv-accordion__body {
+  padding: 0 20px 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+[data-fv-theme="dark"] .fv-accordion__item {
+  border: 1px solid var(--border-outer);
+}

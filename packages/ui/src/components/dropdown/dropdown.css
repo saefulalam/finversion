@@ -1,0 +1,61 @@
+.fv-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.fv-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  background: var(--bg-card);
+  backdrop-filter: blur(30px) saturate(200%);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-spatial-card);
+  padding: 6px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.96);
+  transition: all 0.2s cubic-bezier(0.25,1,0.5,1);
+}
+
+.fv-dropdown.open .fv-dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.fv-dropdown__item {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  border-radius: calc(var(--radius-md) - 4px);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fv-dropdown__item:hover {
+  background: var(--accent-soft);
+}
+
+.fv-dropdown__item--danger {
+  color: var(--color-danger);
+}
+
+.fv-dropdown__item--danger:hover {
+  background: rgba(215,38,30,0.08);
+}
+
+[data-fv-theme="dark"] .fv-dropdown__menu {
+  border: 1px solid var(--border-outer);
+}

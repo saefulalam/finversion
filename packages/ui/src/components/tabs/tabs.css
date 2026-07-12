@@ -1,0 +1,52 @@
+.fv-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--bg-item);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-inset-pod);
+  border: 1px solid var(--border-inner);
+}
+
+.fv-tab {
+  padding: 10px 18px;
+  border-radius: calc(var(--radius-md) - 4px);
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+  text-align: center;
+}
+
+.fv-tab:hover {
+  color: var(--text-primary);
+}
+
+.fv-tab.active {
+  background: var(--bg-card);
+  box-shadow: var(--shadow-spatial-item);
+  color: var(--text-primary);
+}
+
+.fv-tabs__content {
+  padding: 20px;
+  margin-top: 12px;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px) saturate(200%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-spatial-card);
+}
+
+[data-fv-theme="dark"] .fv-tabs {
+  border: 1px solid var(--border-outer);
+}
+
+[data-fv-theme="dark"] .fv-tabs__content {
+  border: 1px solid var(--border-outer);
+}

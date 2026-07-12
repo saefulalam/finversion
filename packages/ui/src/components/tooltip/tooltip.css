@@ -1,0 +1,66 @@
+.fv-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.fv-tooltip::after {
+  content: attr(data-fv-tooltip);
+  position: absolute;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--text-primary);
+  color: var(--bg-body);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.fv-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fv-tooltip--top::after {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+}
+
+.fv-tooltip--top:hover::after {
+  transform: translateX(-50%) translateY(0);
+}
+
+.fv-tooltip--bottom::after {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.fv-tooltip--bottom:hover::after {
+  transform: translateX(-50%) translateY(0);
+}
+
+.fv-tooltip--left::after {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+}
+
+.fv-tooltip--left:hover::after {
+  transform: translateY(-50%) translateX(0);
+}
+
+.fv-tooltip--right::after {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.fv-tooltip--right:hover::after {
+  transform: translateY(-50%) translateX(0);
+}

@@ -1,0 +1,59 @@
+.fv-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fv-checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.fv-checkbox__box {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid var(--border-outer);
+  background: var(--bg-item);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.fv-checkbox__box::after {
+  content: "";
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg) scale(0);
+  transition: transform 0.2s;
+  margin-top: -2px;
+}
+
+.fv-checkbox input:checked + .fv-checkbox__box {
+  background: var(--accent-gradient);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.fv-checkbox input:checked + .fv-checkbox__box::after {
+  transform: rotate(-45deg) scale(1);
+}
+
+.fv-checkbox__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.fv-checkbox:hover .fv-checkbox__box {
+  border-color: var(--accent);
+}

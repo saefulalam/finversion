@@ -1,0 +1,38 @@
+.fv-skeleton {
+  background: linear-gradient(90deg, var(--bg-item) 25%, rgba(255,255,255,0.4) 50%, var(--bg-item) 75%);
+  background-size: 200% 100%;
+  animation: fv-skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+.fv-skeleton--text {
+  height: 16px;
+  width: 100%;
+}
+
+.fv-skeleton--title {
+  height: 24px;
+  width: 60%;
+}
+
+.fv-skeleton--avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.fv-skeleton--card {
+  height: 200px;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+[data-fv-theme="dark"] .fv-skeleton {
+  background: linear-gradient(90deg, rgba(42,42,46,0.6) 25%, rgba(60,60,64,0.6) 50%, rgba(42,42,46,0.6) 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes fv-skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
