@@ -1,0 +1,68 @@
+.fv-datatable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.fv-datatable th {
+  background: var(--bg-item);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  text-align: left;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-outer);
+  position: sticky;
+  top: 0;
+}
+
+.fv-datatable td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-outer);
+  color: var(--text-primary);
+  transition: background 0.2s;
+}
+
+.fv-datatable tr:last-child td {
+  border-bottom: none;
+}
+
+.fv-datatable tr:hover td {
+  background: var(--accent-soft);
+}
+
+.fv-datatable__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid var(--border-outer);
+}
+
+.fv-datatable__pagination button {
+  padding: 8px 16px;
+  border: 1px solid var(--border-outer);
+  border-radius: var(--radius-sm);
+  background: var(--bg-item);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.fv-datatable__pagination button:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.fv-datatable__pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fv-pro-required {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+}
