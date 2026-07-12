@@ -1,2 +1,3 @@
 // FV-UI Core - Export all free components
-// Components will be added in Task 4+
+export { Button } from './components/button'
+export type { ButtonProps } from './components/button'
