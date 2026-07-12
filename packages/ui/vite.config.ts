@@ -1,18 +1,10 @@
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
-import { writeFileSync, mkdirSync, existsSync } from 'fs'
-import { join } from 'path'
 
 export default defineConfig({
   plugins: [
-    dts({ include: ['src'] }),
-    {
-      name: 'collect-styles',
-      generateBundle() {
-        // This plugin will be used to collect CSS into a single file
-      }
-    }
+    dts({ include: ['src'] })
   ],
   build: {
     lib: {
@@ -28,6 +20,7 @@ export default defineConfig({
           '@fv-ui/shared': 'FVShared'
         }
       }
-    }
+    },
+    outDir: 'dist'
   }
 })

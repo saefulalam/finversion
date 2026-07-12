@@ -15,6 +15,25 @@ importers:
         specifier: ^5.4.0
         version: 5.9.3
 
+  apps/finversion:
+    dependencies:
+      '@fv-ui/core':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@fv-ui/pro':
+        specifier: workspace:*
+        version: link:../../packages/ui-pro
+      '@fv-ui/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+    devDependencies:
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+      vite:
+        specifier: ^5.4.0
+        version: 5.4.21
+
   packages/shared:
     devDependencies:
       typescript:
@@ -32,6 +51,27 @@ importers:
 
   packages/ui:
     devDependencies:
+      '@fv-ui/shared':
+        specifier: workspace:*
+        version: link:../shared
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+      vite:
+        specifier: ^5.4.0
+        version: 5.4.21
+      vite-plugin-dts:
+        specifier: ^4.0.0
+        version: 4.5.4(rollup@4.62.2)(typescript@5.9.3)(vite@5.4.21)
+      vitest:
+        specifier: ^2.0.0
+        version: 2.1.9
+
+  packages/ui-pro:
+    devDependencies:
+      '@fv-ui/core':
+        specifier: workspace:*
+        version: link:../ui
       '@fv-ui/shared':
         specifier: workspace:*
         version: link:../shared

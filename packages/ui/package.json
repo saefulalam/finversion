@@ -14,7 +14,7 @@
     "./styles": "./dist/styles/fv-ui.css"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node -e \"const fs=require('fs'),p=require('path');const d=p.join(__dirname,'src/components');let c='';const t=p.join(__dirname,'../shared/src/tokens.css');if(fs.existsSync(t))c+=fs.readFileSync(t,'utf8')+'\\n\\n';fs.readdirSync(d).forEach(f=>{const f2=p.join(d,f,f+'.css');if(fs.existsSync(f2))c+=fs.readFileSync(f2,'utf8')+'\\n\\n'});const o=p.join(__dirname,'dist/styles');if(!fs.existsSync(o))fs.mkdirSync(o,{recursive:true});fs.writeFileSync(p.join(o,'fv-ui.css'),c)\"",
     "dev": "vite build --watch",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
