@@ -1,0 +1,32 @@
+{
+  "name": "@fv-ui/core",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "style": "dist/styles/fv-ui.css",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": "./dist/styles/fv-ui.css"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "@fv-ui/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@fv-ui/shared": "workspace:*",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.0.0",
+    "vitest": "^2.0.0",
+    "typescript": "^5.4.0"
+  }
+}
