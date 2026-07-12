@@ -1,0 +1,28 @@
+{
+  "name": "@fv-ui/shared",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "style": "dist/tokens.css",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./tokens": "./dist/tokens.css"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.0.0",
+    "vitest": "^2.0.0",
+    "typescript": "^5.4.0"
+  }
+}
