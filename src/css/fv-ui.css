@@ -11873,6 +11873,13 @@ textarea.fv-input { resize: vertical; }
   box-shadow: var(--shadow-spatial-card);
 }
 
+.fv-tab-panel {
+  display: none;
+}
+.fv-tab-panel.active {
+  display: block;
+}
+
 [data-fv-theme="dark"] .fv-tabs {
   border: 1px solid var(--border-outer);
 }
