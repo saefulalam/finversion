@@ -1,0 +1,95 @@
+.fv-verify-email {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.fv-verify-email__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.fv-verify-email__title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.fv-verify-email__subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.fv-verify-email__otp {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.fv-verify-email__otp-input {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-inner);
+  background: var(--bg-item);
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s;
+}
+
+.fv-verify-email__otp-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.fv-verify-email__resend {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.fv-verify-email__resend button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.fv-verify-email__resend button:hover {
+  text-decoration: underline;
+}
+
+.fv-verify-email__resend button:disabled {
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+.fv-verify-email__error {
+  padding: 10px 14px;
+  background: rgba(215, 38, 30, 0.08);
+  border: 1px solid rgba(215, 38, 30, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-danger);
+  font-size: 13px;
+  font-weight: 500;
+  width: 100%;
+}

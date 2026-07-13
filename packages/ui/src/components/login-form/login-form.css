@@ -1,0 +1,111 @@
+.fv-login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fv-login-form__header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.fv-login-form__title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.fv-login-form__subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.fv-login-form__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+}
+
+.fv-login-form__divider::before,
+.fv-login-form__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-outer);
+}
+
+.fv-login-form__social {
+  display: flex;
+  gap: 8px;
+}
+
+.fv-login-form__social-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background: var(--bg-item);
+  border: 1px solid var(--border-inner);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fv-login-form__social-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.fv-login-form__footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.fv-login-form__footer a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.fv-login-form__footer a:hover {
+  text-decoration: underline;
+}
+
+.fv-login-form__remember {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fv-login-form__forgot {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.fv-login-form__forgot:hover {
+  text-decoration: underline;
+}
+
+.fv-login-form__error {
+  padding: 10px 14px;
+  background: rgba(215, 38, 30, 0.08);
+  border: 1px solid rgba(215, 38, 30, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-danger);
+  font-size: 13px;
+  font-weight: 500;
+}

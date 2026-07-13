@@ -1,0 +1,46 @@
+.fv-sparkline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.fv-sparkline__svg {
+  display: block;
+}
+
+.fv-sparkline__line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.fv-sparkline__line--success {
+  stroke: var(--color-success);
+}
+
+.fv-sparkline__line--danger {
+  stroke: var(--color-danger);
+}
+
+.fv-sparkline__area {
+  opacity: 0.1;
+}
+
+.fv-sparkline__area--accent {
+  fill: var(--accent);
+}
+
+.fv-sparkline__area--success {
+  fill: var(--color-success);
+}
+
+.fv-sparkline__area--danger {
+  fill: var(--color-danger);
+}
+
+.fv-sparkline__dot {
+  fill: var(--accent);
+  stroke: var(--bg-card);
+  stroke-width: 2;
+}

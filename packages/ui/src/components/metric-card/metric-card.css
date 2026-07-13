@@ -1,0 +1,120 @@
+.fv-metric-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-spatial-card);
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: transform 0.3s cubic-bezier(0.25,1,0.5,1);
+}
+
+.fv-metric-card:hover {
+  transform: translateY(-2px);
+}
+
+.fv-metric-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.fv-metric-card__icon--success {
+  background: rgba(36,176,73,0.08);
+  color: var(--color-success);
+}
+
+.fv-metric-card__icon--warning {
+  background: rgba(230,138,0,0.08);
+  color: var(--color-warning);
+}
+
+.fv-metric-card__icon--danger {
+  background: rgba(215,38,30,0.08);
+  color: var(--color-danger);
+}
+
+.fv-metric-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.fv-metric-card__label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin: 0 0 4px;
+}
+
+.fv-metric-card__value {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.fv-metric-card__change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-top: 6px;
+}
+
+.fv-metric-card__change--up {
+  background: rgba(36,176,73,0.08);
+  color: var(--color-success);
+}
+
+.fv-metric-card__change--down {
+  background: rgba(215,38,30,0.08);
+  color: var(--color-danger);
+}
+
+.fv-metric-card__change--neutral {
+  background: var(--bg-item);
+  color: var(--text-tertiary);
+}
+
+[data-fv-theme="dark"] .fv-metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-outer);
+}
+
+[data-fv-theme="dark"] .fv-metric-card__label {
+  color: var(--text-secondary);
+}
+
+[data-fv-theme="dark"] .fv-metric-card__value {
+  color: var(--text-primary);
+}
+
+[data-fv-theme="dark"] .fv-metric-card__change--up {
+  background: rgba(36, 176, 73, 0.12);
+  color: var(--color-success);
+}
+
+[data-fv-theme="dark"] .fv-metric-card__change--down {
+  background: rgba(215, 38, 30, 0.12);
+  color: var(--color-danger);
+}
+
+[data-fv-theme="dark"] .fv-metric-card__change--neutral {
+  background: var(--bg-item);
+  color: var(--text-tertiary);
+}

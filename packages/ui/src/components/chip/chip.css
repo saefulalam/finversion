@@ -1,0 +1,63 @@
+.fv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--bg-item);
+  border: 1px solid var(--border-inner);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-spatial-item);
+  transition: all 0.15s;
+}
+
+.fv-chip:hover {
+  box-shadow: var(--shadow-spatial-btn);
+}
+
+.fv-chip--accent {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: transparent;
+}
+
+.fv-chip--success {
+  background: rgba(36,176,73,0.08);
+  color: var(--color-success);
+  border-color: transparent;
+}
+
+.fv-chip--warning {
+  background: rgba(230,138,0,0.08);
+  color: var(--color-warning);
+  border-color: transparent;
+}
+
+.fv-chip--danger {
+  background: rgba(215,38,30,0.08);
+  color: var(--color-danger);
+  border-color: transparent;
+}
+
+.fv-chip__remove {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.15s;
+}
+
+.fv-chip__remove:hover {
+  background: rgba(215,38,30,0.1);
+  color: var(--color-danger);
+}

@@ -1,0 +1,66 @@
+.fv-pin-input {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.fv-pin-input__field {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  background: var(--bg-item);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-inset-pod);
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s;
+  font-family: inherit;
+  caret-color: transparent;
+}
+
+.fv-pin-input__field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-inset-pod);
+}
+
+.fv-pin-input__field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fv-pin-input__field::placeholder {
+  color: var(--text-tertiary);
+  font-weight: 400;
+}
+
+.fv-pin-input__field--filled {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.fv-pin-input--sm .fv-pin-input__field {
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+}
+
+.fv-pin-input--lg .fv-pin-input__field {
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+}
+
+.fv-pin-input__separator {
+  color: var(--text-tertiary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+[data-fv-theme="dark"] .fv-pin-input__field {
+  border: 1px solid var(--border-outer);
+}

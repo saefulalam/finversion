@@ -1,0 +1,39 @@
+.fv-theme-switcher {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--bg-item);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 999px;
+  box-shadow: var(--shadow-inset-pod);
+  border: 1px solid var(--border-inner);
+}
+
+.fv-theme-switcher__option {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.fv-theme-switcher__option:hover {
+  color: var(--text-primary);
+}
+
+.fv-theme-switcher__option.active {
+  background: var(--bg-card);
+  color: var(--accent);
+  box-shadow: var(--shadow-spatial-item);
+}
+
+[data-fv-theme="dark"] .fv-theme-switcher {
+  border: 1px solid var(--border-outer);
+}

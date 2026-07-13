@@ -1,0 +1,130 @@
+.fv-swipe-action {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-outer);
+  margin-bottom: 2px;
+}
+
+.fv-swipe-action__content {
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  background: var(--bg-card);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 12px;
+}
+
+.fv-swipe-action__content.swiping {
+  transition: none;
+  cursor: grabbing;
+}
+
+.fv-swipe-action__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--bg-item);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+.fv-swipe-action__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.fv-swipe-action__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fv-swipe-action__subtitle {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fv-swipe-action__actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  z-index: 0;
+}
+
+.fv-swipe-action__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  color: #fff;
+  font-size: 20px;
+  flex-shrink: 0;
+  gap: 4px;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.fv-swipe-action__action:hover {
+  filter: brightness(1.1);
+}
+
+.fv-swipe-action__action:active {
+  filter: brightness(0.9);
+}
+
+.fv-swipe-action__action-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.fv-swipe-action__action--edit {
+  background: var(--accent);
+}
+
+.fv-swipe-action__action--delete {
+  background: var(--color-danger);
+}
+
+.fv-swipe-action__action--archive {
+  background: var(--color-warning);
+}
+
+.fv-swipe-action__action--pin {
+  background: var(--color-success);
+}
+
+.fv-swipe-action__action--more {
+  background: var(--text-tertiary);
+}
+
+[data-fv-theme="dark"] .fv-swipe-action {
+  border-color: var(--border-outer);
+}
+
+[data-fv-theme="dark"] .fv-swipe-action__content {
+  background: var(--bg-card);
+}
+
+[data-fv-theme="dark"] .fv-swipe-action__icon {
+  background: var(--bg-item);
+}

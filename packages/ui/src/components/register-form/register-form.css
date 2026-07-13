@@ -1,0 +1,137 @@
+.fv-register-form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fv-register-form__header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.fv-register-form__title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.fv-register-form__subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.fv-register-form__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+}
+
+.fv-register-form__divider::before,
+.fv-register-form__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-outer);
+}
+
+.fv-register-form__social {
+  display: flex;
+  gap: 8px;
+}
+
+.fv-register-form__social-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background: var(--bg-item);
+  border: 1px solid var(--border-inner);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fv-register-form__social-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.fv-register-form__terms {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.fv-register-form__terms a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.fv-register-form__terms a:hover {
+  text-decoration: underline;
+}
+
+.fv-register-form__footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.fv-register-form__footer a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.fv-register-form__footer a:hover {
+  text-decoration: underline;
+}
+
+.fv-register-form__password-strength {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.fv-register-form__password-bar {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border-outer);
+  transition: background 0.3s;
+}
+
+.fv-register-form__password-bar.weak {
+  background: var(--color-danger);
+}
+
+.fv-register-form__password-bar.medium {
+  background: var(--color-warning);
+}
+
+.fv-register-form__password-bar.strong {
+  background: var(--color-success);
+}
+
+.fv-register-form__error {
+  padding: 10px 14px;
+  background: rgba(215, 38, 30, 0.08);
+  border: 1px solid rgba(215, 38, 30, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-danger);
+  font-size: 13px;
+  font-weight: 500;
+}

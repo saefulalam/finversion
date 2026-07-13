@@ -1,0 +1,81 @@
+.fv-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.fv-tag--solid {
+  background: var(--accent-gradient);
+  color: #fff;
+}
+
+.fv-tag--solid.fv-tag--success {
+  background: var(--success-gradient);
+}
+
+.fv-tag--solid.fv-tag--warning {
+  background: var(--warning-gradient);
+}
+
+.fv-tag--solid.fv-tag--danger {
+  background: var(--danger-gradient);
+}
+
+.fv-tag--soft {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.fv-tag--soft.fv-tag--success {
+  background: rgba(36,176,73,0.08);
+  color: var(--color-success);
+}
+
+.fv-tag--soft.fv-tag--warning {
+  background: rgba(230,138,0,0.08);
+  color: var(--color-warning);
+}
+
+.fv-tag--soft.fv-tag--danger {
+  background: rgba(215,38,30,0.08);
+  color: var(--color-danger);
+}
+
+.fv-tag--outline {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+}
+
+.fv-tag--outline.fv-tag--success {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.fv-tag--outline.fv-tag--warning {
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+}
+
+.fv-tag--outline.fv-tag--danger {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.fv-tag__remove {
+  margin-left: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+
+.fv-tag__remove:hover {
+  opacity: 1;
+}

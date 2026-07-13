@@ -1,0 +1,34 @@
+.fv-area-chart {
+  position: relative;
+  overflow: hidden;
+}
+
+.fv-area-chart__area {
+  fill: var(--accent);
+  opacity: 0.15;
+}
+
+.fv-area-chart__line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.fv-area-chart__dot {
+  fill: var(--accent);
+  stroke: var(--bg-card);
+  stroke-width: 2;
+}
+
+.fv-area-chart__grid {
+  stroke: var(--border-outer);
+  stroke-dasharray: 4 4;
+}
+
+.fv-area-chart__label {
+  fill: var(--text-tertiary);
+  font-size: 11px;
+  font-weight: 500;
+}

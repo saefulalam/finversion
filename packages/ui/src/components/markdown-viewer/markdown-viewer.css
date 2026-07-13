@@ -1,0 +1,118 @@
+.fv-markdown-viewer {
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.fv-markdown-viewer h1,
+.fv-markdown-viewer h2,
+.fv-markdown-viewer h3,
+.fv-markdown-viewer h4,
+.fv-markdown-viewer h5,
+.fv-markdown-viewer h6 {
+  font-weight: 700;
+  margin: 16px 0 8px;
+  color: var(--text-primary);
+}
+
+.fv-markdown-viewer h1 { font-size: 24px; }
+.fv-markdown-viewer h2 { font-size: 20px; }
+.fv-markdown-viewer h3 { font-size: 18px; }
+.fv-markdown-viewer h4 { font-size: 16px; }
+
+.fv-markdown-viewer p {
+  margin: 8px 0;
+}
+
+.fv-markdown-viewer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.fv-markdown-viewer a:hover {
+  text-decoration: underline;
+}
+
+.fv-markdown-viewer strong {
+  font-weight: 700;
+}
+
+.fv-markdown-viewer em {
+  font-style: italic;
+}
+
+.fv-markdown-viewer code {
+  background: var(--bg-item);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+  font-family: monospace;
+}
+
+.fv-markdown-viewer pre {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  margin: 12px 0;
+  border: 1px solid var(--border-inner);
+}
+
+[data-fv-theme="dark"] .fv-markdown-viewer pre {
+  border-color: var(--border-outer);
+}
+
+.fv-markdown-viewer pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: 13px;
+}
+
+.fv-markdown-viewer ul,
+.fv-markdown-viewer ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.fv-markdown-viewer li {
+  margin: 4px 0;
+}
+
+.fv-markdown-viewer blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+  margin: 12px 0;
+  color: var(--text-secondary);
+}
+
+.fv-markdown-viewer hr {
+  border: none;
+  border-top: 1px solid var(--border-outer);
+  margin: 16px 0;
+}
+
+.fv-markdown-viewer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.fv-markdown-viewer th,
+.fv-markdown-viewer td {
+  padding: 8px 12px;
+  border: 1px solid var(--border-outer);
+  text-align: left;
+  font-size: 14px;
+}
+
+.fv-markdown-viewer th {
+  background: var(--bg-item);
+  font-weight: 600;
+}
+
+.fv-markdown-viewer img {
+  max-width: 100%;
+  border-radius: var(--radius-md);
+}

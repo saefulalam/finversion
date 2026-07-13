@@ -1,0 +1,125 @@
+.fv-color-picker {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fv-color-picker__swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-outer);
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-spatial-item);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.fv-color-picker__swatch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    #ccc 0%, #fff 25%,
+    #ccc 25%, #fff 50%,
+    #ccc 50%, #fff 75%,
+    #ccc 75%, #fff 100%
+  );
+  background-size: 8px 8px;
+  z-index: 0;
+}
+
+.fv-color-picker__swatch-color {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.fv-color-picker__swatch:hover {
+  box-shadow: 0 0 0 4px var(--accent-soft), var(--shadow-spatial-item);
+  transform: scale(1.05);
+}
+
+.fv-color-picker__swatch:active {
+  transform: scale(0.95);
+}
+
+.fv-color-picker__swatch--sm {
+  width: 32px;
+  height: 32px;
+}
+
+.fv-color-picker__swatch--lg {
+  width: 48px;
+  height: 48px;
+}
+
+.fv-color-picker__palette {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  padding: 12px;
+  background: var(--bg-card);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-spatial-card);
+}
+
+.fv-color-picker__swatch-option {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  outline: none;
+  padding: 0;
+}
+
+.fv-color-picker__swatch-option:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.fv-color-picker__swatch-option--selected {
+  border-color: #fff;
+  box-shadow: 0 0 0 2px var(--accent), 0 2px 8px rgba(0,0,0,0.2);
+  transform: scale(1.1);
+}
+
+.fv-color-picker__input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fv-color-picker__input-field {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: monospace;
+  background: var(--bg-item);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-inset-pod);
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s;
+}
+
+.fv-color-picker__input-field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-inset-pod);
+}
+
+.fv-color-picker__input-field::placeholder {
+  color: var(--text-tertiary);
+}

@@ -1,0 +1,42 @@
+.fv-session-timeout {
+  text-align: center;
+}
+
+.fv-session-timeout__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(215, 38, 30, 0.1);
+  color: var(--color-danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 16px;
+}
+
+.fv-session-timeout__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.fv-session-timeout__message {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 20px;
+}
+
+.fv-session-timeout__timer {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-danger);
+  margin-bottom: 20px;
+}
+
+.fv-session-timeout__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}

@@ -1,0 +1,100 @@
+.fv-code-renderer {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-inner);
+}
+
+.fv-code-renderer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: var(--bg-item);
+  border-bottom: 1px solid var(--border-inner);
+}
+
+.fv-code-renderer__language {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.fv-code-renderer__copy {
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.fv-code-renderer__copy:hover {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.fv-code-renderer__copy.copied {
+  color: var(--color-success);
+}
+
+.fv-code-renderer__code {
+  padding: 16px;
+  overflow-x: auto;
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  tab-size: 2;
+}
+
+.fv-code-renderer__code::-webkit-scrollbar {
+  height: 6px;
+}
+
+.fv-code-renderer__code::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.fv-code-renderer__code::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: 3px;
+}
+
+.fv-code-renderer__line-number {
+  display: inline-block;
+  width: 32px;
+  text-align: right;
+  padding-right: 16px;
+  color: var(--text-tertiary);
+  user-select: none;
+}
+
+.fv-code-renderer__line--highlighted {
+  background: var(--accent-soft);
+  margin: 0 -16px;
+  padding: 0 16px;
+}
+
+.fv-code-renderer__footer {
+  padding: 8px 16px;
+  background: var(--bg-item);
+  border-top: 1px solid var(--border-inner);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+[data-fv-theme="dark"] .fv-code-renderer {
+  border-color: var(--border-outer);
+}
+
+[data-fv-theme="dark"] .fv-code-renderer__copy:hover {
+  background: var(--accent-soft);
+}

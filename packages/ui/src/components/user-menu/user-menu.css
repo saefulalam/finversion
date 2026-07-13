@@ -1,0 +1,130 @@
+.fv-user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.fv-user-menu:hover {
+  background: var(--bg-item);
+}
+
+.fv-user-menu__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 2px solid var(--border-inner);
+}
+
+.fv-user-menu__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fv-user-menu__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.fv-user-menu__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fv-user-menu__email {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fv-user-menu__arrow {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  transition: transform 0.2s;
+}
+
+.fv-user-menu.open .fv-user-menu__arrow {
+  transform: rotate(180deg);
+}
+
+.fv-user-menu__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 200px;
+  background: var(--bg-card);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid var(--border-inner);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-spatial-card);
+  padding: 4px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: all 0.2s;
+}
+
+.fv-user-menu.open .fv-user-menu__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.fv-user-menu__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.fv-user-menu__dropdown-item:hover {
+  background: var(--bg-item);
+  color: var(--text-primary);
+}
+
+.fv-user-menu__dropdown-item--danger {
+  color: var(--color-danger);
+}
+
+.fv-user-menu__dropdown-item--danger:hover {
+  background: rgba(215, 38, 30, 0.08);
+  color: var(--color-danger);
+}
+
+.fv-user-menu__dropdown-separator {
+  height: 1px;
+  background: var(--border-outer);
+  margin: 4px 0;
+}

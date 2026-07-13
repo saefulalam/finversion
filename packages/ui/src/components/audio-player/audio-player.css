@@ -1,0 +1,108 @@
+.fv-audio-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-spatial-card);
+}
+
+.fv-audio-player__play {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-spatial-btn);
+  transition: transform 0.15s, filter 0.15s;
+}
+
+.fv-audio-player__play:hover {
+  filter: brightness(1.05);
+}
+
+.fv-audio-player__play:active {
+  transform: scale(0.95);
+}
+
+.fv-audio-player__waveform {
+  flex: 1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.fv-audio-player__waveform-bar {
+  flex: 1;
+  background: var(--bg-item);
+  border-radius: 2px;
+  min-width: 3px;
+  transition: background 0.15s;
+}
+
+.fv-audio-player__waveform-bar--active {
+  background: var(--accent);
+}
+
+.fv-audio-player__time {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  min-width: 40px;
+  text-align: center;
+}
+
+.fv-audio-player__progress {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-item);
+  border-radius: 2px;
+  margin-top: 8px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.fv-audio-player__progress-fill {
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  transition: width 0.1s;
+}
+
+.fv-audio-player__volume {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-item);
+  border: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.fv-audio-player__volume:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+[data-fv-theme="dark"] .fv-audio-player {
+  border: 1px solid var(--border-outer);
+}

@@ -1,0 +1,51 @@
+.fv-infinite-scroll {
+  display: flex;
+  flex-direction: column;
+}
+
+.fv-infinite-scroll__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 8px;
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+
+.fv-infinite-scroll__spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-outer);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: fv-infinite-scroll-spin 0.8s linear infinite;
+}
+
+.fv-infinite-scroll__end {
+  text-align: center;
+  padding: 16px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+}
+
+.fv-infinite-scroll__error {
+  text-align: center;
+  padding: 16px;
+  color: var(--color-danger);
+  font-size: 13px;
+}
+
+.fv-infinite-scroll__retry {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@keyframes fv-infinite-scroll-spin {
+  to { transform: rotate(360deg); }
+}

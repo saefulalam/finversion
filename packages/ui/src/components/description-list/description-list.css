@@ -1,0 +1,48 @@
+.fv-dlist {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 24px;
+}
+
+.fv-dlist dt {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-outer);
+}
+
+.fv-dlist dd {
+  color: var(--text-primary);
+  font-size: 14px;
+  margin: 0;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-outer);
+}
+
+.fv-dlist dt:last-of-type,
+.fv-dlist dd:last-of-type {
+  border-bottom: none;
+}
+
+.fv-dlist--compact dt,
+.fv-dlist--compact dd {
+  padding: 4px 0;
+}
+
+.fv-dlist--bordered {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  padding: 16px 20px;
+}
+
+.fv-dlist--bordered dt,
+.fv-dlist--bordered dd {
+  border-bottom: 1px solid var(--border-outer);
+}
+
+.fv-dlist--bordered dt:last-of-type,
+.fv-dlist--bordered dd:last-of-type {
+  border-bottom: none;
+}

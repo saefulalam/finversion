@@ -1,0 +1,100 @@
+.fv-locale-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--bg-item);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-inner);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-inset-pod);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.fv-locale-switcher:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-inset-pod);
+}
+
+.fv-locale-switcher__flag {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.fv-locale-switcher__label {
+  flex: 1;
+}
+
+.fv-locale-switcher__arrow {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  transition: transform 0.2s;
+}
+
+.fv-locale-switcher.open .fv-locale-switcher__arrow {
+  transform: rotate(180deg);
+}
+
+.fv-locale-switcher__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 180px;
+  background: var(--bg-card);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid var(--border-inner);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-spatial-card);
+  padding: 4px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: all 0.2s;
+}
+
+.fv-locale-switcher.open .fv-locale-switcher__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.fv-locale-switcher__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.fv-locale-switcher__option:hover {
+  background: var(--bg-item);
+  color: var(--text-primary);
+}
+
+.fv-locale-switcher__option.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+[data-fv-theme="dark"] .fv-locale-switcher {
+  border: 1px solid var(--border-outer);
+}
+
+[data-fv-theme="dark"] .fv-locale-switcher__dropdown {
+  border: 1px solid var(--border-outer);
+}

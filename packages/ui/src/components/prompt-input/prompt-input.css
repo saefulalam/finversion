@@ -1,0 +1,103 @@
+.fv-prompt-input {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--bg-item);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-inset-pod);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.fv-prompt-input:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-inset-pod);
+}
+
+.fv-prompt-input__field {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  outline: none;
+  font-family: inherit;
+  resize: none;
+  min-height: 24px;
+  max-height: 120px;
+}
+
+.fv-prompt-input__field::placeholder {
+  color: var(--text-tertiary);
+}
+
+.fv-prompt-input__send {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-spatial-btn);
+  transition: filter 0.15s, transform 0.15s;
+}
+
+.fv-prompt-input__send:hover {
+  filter: brightness(1.05);
+  transform: scale(1.05);
+}
+
+.fv-prompt-input__send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: none;
+  transform: none;
+}
+
+.fv-prompt-input__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fv-prompt-input__action {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.fv-prompt-input__action:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+[data-fv-theme="dark"] .fv-prompt-input {
+  border: 1px solid var(--border-outer);
+}
+
+[data-fv-theme="dark"] .fv-prompt-input:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-inset-pod);
+}
+
+[data-fv-theme="dark"] .fv-prompt-input__action:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}

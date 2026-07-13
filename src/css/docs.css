@@ -294,7 +294,7 @@
   border: 1px solid var(--border-inner);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-spatial-card);
-  margin-bottom: 20px; overflow: hidden;
+  margin-bottom: 20px; overflow: clip;
 }
 .component-block__head {
   display: flex; align-items: center; justify-content: space-between;
@@ -312,6 +312,47 @@
 
 /* --- Preview --- */
 .component-block__preview { padding: 24px; }
+
+/* Neutralize fixed/overlay positioning inside static doc previews so
+   overlay components render visibly instead of their hidden state. */
+.component-block__preview .fv-bottom-sheet,
+.component-block__preview .fv-bottom-nav,
+.component-block__preview .fv-action-sheet,
+.component-block__preview .fv-action-sheet__overlay,
+.component-block__preview .fv-command-menu,
+.component-block__preview .fv-command-menu__overlay,
+.component-block__preview .fv-confirm-dialog,
+.component-block__preview .fv-confirm-dialog__overlay,
+.component-block__preview .fv-dialog,
+.component-block__preview .fv-dialog__overlay,
+.component-block__preview .fv-fab,
+.component-block__preview .fv-lightbox,
+.component-block__preview .fv-lightbox__overlay,
+.component-block__preview .fv-mobile-drawer,
+.component-block__preview .fv-mobile-nav,
+.component-block__preview .fv-mobile-search,
+.component-block__preview .fv-modal-overlay,
+.component-block__preview .fv-offline-indicator,
+.component-block__preview .fv-scroll-top,
+.component-block__preview .fv-snackbar,
+.component-block__preview .fv-toast-container,
+.component-block__preview .fv-toast,
+.component-block__preview .fv-tour,
+.component-block__preview .fv-tour__overlay,
+.component-block__preview .fv-dropdown__menu,
+.component-block__preview .fv-user-menu__menu,
+.component-block__preview .fv-mega-menu__panel,
+.component-block__preview .fv-tooltip,
+.component-block__preview .fv-pull-to-refresh__indicator {
+  position: static !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  inset: auto !important;
+  z-index: auto !important;
+  max-height: none !important;
+  pointer-events: auto !important;
+}
 
 /* --- Code Panel --- */
 .component-block__code {

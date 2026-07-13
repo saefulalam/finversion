@@ -1,0 +1,70 @@
+.fv-shopping-cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.fv-shopping-cart__empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-tertiary);
+}
+
+.fv-shopping-cart__empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.fv-shopping-cart__empty-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.fv-shopping-cart__items {
+  flex: 1;
+}
+
+.fv-shopping-cart__coupon {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-outer);
+}
+
+.fv-shopping-cart__summary {
+  padding: 16px;
+}
+
+.fv-shopping-cart__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.fv-shopping-cart__row--discount {
+  color: var(--color-success);
+}
+
+.fv-shopping-cart__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 16px;
+  border-top: 1px solid var(--border-outer);
+  margin-top: 8px;
+}
+
+.fv-shopping-cart__total-value {
+  color: var(--accent);
+}
+
+.fv-shopping-cart__checkout {
+  padding: 0 16px 16px;
+}
+
+.fv-shopping-cart__checkout .fv-btn {
+  width: 100%;
+}

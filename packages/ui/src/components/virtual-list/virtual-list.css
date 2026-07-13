@@ -1,0 +1,16 @@
+.fv-virtual-list {
+  overflow: auto;
+  position: relative;
+}
+
+.fv-virtual-list__phantom {
+  width: 100%;
+  pointer-events: none;
+}
+
+.fv-virtual-list__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}

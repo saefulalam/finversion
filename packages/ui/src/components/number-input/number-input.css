@@ -1,0 +1,120 @@
+.fv-number-input {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+}
+
+.fv-number-input__field {
+  padding: 12px 48px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 500;
+  background: var(--bg-item);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-inset-pod);
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s;
+  width: 100%;
+  font-family: inherit;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.fv-number-input__field::-webkit-outer-spin-button,
+.fv-number-input__field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.fv-number-input__field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-inset-pod);
+}
+
+.fv-number-input__field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fv-number-input__field::placeholder {
+  color: var(--text-tertiary);
+}
+
+.fv-number-input__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(242,244,247,0.85) 100%);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-spatial-item);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25,1,0.5,1);
+  outline: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.fv-number-input__btn:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-spatial-item);
+}
+
+.fv-number-input__btn:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.fv-number-input__btn--minus {
+  left: 6px;
+}
+
+.fv-number-input__btn--plus {
+  right: 6px;
+}
+
+.fv-number-input__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: translateY(-50%);
+}
+
+.fv-number-input--sm .fv-number-input__field {
+  padding: 8px 40px;
+  font-size: 13px;
+}
+
+.fv-number-input--sm .fv-number-input__btn {
+  width: 26px;
+  height: 26px;
+  font-size: 14px;
+}
+
+.fv-number-input--lg .fv-number-input__field {
+  padding: 14px 56px;
+  font-size: 17px;
+}
+
+.fv-number-input--lg .fv-number-input__btn {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+}
+
+[data-fv-theme="dark"] .fv-number-input__field {
+  border: 1px solid var(--border-outer);
+}
+
+[data-fv-theme="dark"] .fv-number-input__btn {
+  background: linear-gradient(180deg, rgba(54,54,58,0.85) 0%, rgba(38,38,42,0.85) 100%);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}

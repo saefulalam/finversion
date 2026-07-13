@@ -1,0 +1,77 @@
+.fv-pull-to-refresh {
+  overflow: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fv-pull-to-refresh__indicator {
+  text-align: center;
+  padding: 20px 16px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.2s, opacity 0.2s, padding 0.3s;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.fv-pull-to-refresh__indicator.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fv-pull-to-refresh__spinner {
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid var(--border-outer);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: fv-ptr-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.fv-pull-to-refresh__arrow {
+  font-size: 18px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.fv-pull-to-refresh__arrow.pulling {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.fv-pull-to-refresh__text {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.fv-pull-to-refresh--refreshing .fv-pull-to-refresh__indicator {
+  padding: 24px 16px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fv-pull-to-refresh--refreshing .fv-pull-to-refresh__indicator .fv-pull-to-refresh__arrow {
+  display: none;
+}
+
+.fv-pull-to-refresh__content {
+  min-height: 100px;
+}
+
+@keyframes fv-ptr-spin {
+  to { transform: rotate(360deg); }
+}
+
+[data-fv-theme="dark"] .fv-pull-to-refresh__spinner {
+  border-color: rgba(255,255,255,0.15);
+  border-top-color: var(--accent);
+}
+
+[data-fv-theme="dark"] .fv-pull-to-refresh__indicator {
+  color: var(--text-tertiary);
+}

@@ -1,0 +1,76 @@
+.fv-gauge {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fv-gauge__svg {
+  width: 100%;
+  overflow: visible;
+}
+
+.fv-gauge__track {
+  fill: none;
+  stroke: var(--bg-item);
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.fv-gauge__fill {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fv-gauge__fill--accent {
+  stroke: var(--accent);
+}
+
+.fv-gauge__fill--success {
+  stroke: var(--color-success);
+}
+
+.fv-gauge__fill--warning {
+  stroke: var(--color-warning);
+}
+
+.fv-gauge__fill--danger {
+  stroke: var(--color-danger);
+}
+
+.fv-gauge__value {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.fv-gauge__label {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.fv-gauge__min,
+.fv-gauge__max {
+  position: absolute;
+  bottom: 0;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.fv-gauge__min {
+  left: 10%;
+}
+
+.fv-gauge__max {
+  right: 10%;
+}

@@ -1,0 +1,48 @@
+.fv-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 50;
+  border-radius: inherit;
+}
+
+[data-fv-theme="dark"] .fv-loading-overlay {
+  background: rgba(0,0,0,0.4);
+}
+
+.fv-loading-overlay__spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border-outer);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: fv-spin 0.7s linear infinite;
+}
+
+.fv-loading-overlay--sm .fv-loading-overlay__spinner {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.fv-loading-overlay--lg .fv-loading-overlay__spinner {
+  width: 44px;
+  height: 44px;
+  border-width: 4px;
+}
+
+.fv-loading-overlay__text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+@keyframes fv-spin {
+  to { transform: rotate(360deg); }
+}

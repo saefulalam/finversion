@@ -1,0 +1,42 @@
+.fv-offline-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: var(--color-warning);
+  color: #fff;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 99999;
+  transition: transform 0.3s cubic-bezier(0.25,1,0.5,1);
+}
+
+.fv-offline-indicator.hidden {
+  transform: translateY(-100%);
+}
+
+.fv-offline-indicator__icon {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.fv-offline-indicator__retry {
+  margin-left: 12px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.fv-offline-indicator__retry:hover {
+  background: rgba(255,255,255,0.25);
+}

@@ -1,0 +1,53 @@
+.fv-circular-progress {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fv-circular-progress__svg {
+  transform: rotate(-90deg);
+}
+
+.fv-circular-progress__track {
+  fill: none;
+  stroke: var(--border-outer);
+}
+
+.fv-circular-progress__bar {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.4s cubic-bezier(0.25,1,0.5,1);
+}
+
+.fv-circular-progress--success .fv-circular-progress__bar {
+  stroke: var(--color-success);
+}
+
+.fv-circular-progress--warning .fv-circular-progress__bar {
+  stroke: var(--color-warning);
+}
+
+.fv-circular-progress--danger .fv-circular-progress__bar {
+  stroke: var(--color-danger);
+}
+
+.fv-circular-progress__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.fv-circular-progress--sm .fv-circular-progress__label {
+  font-size: 11px;
+}
+
+.fv-circular-progress--lg .fv-circular-progress__label {
+  font-size: 20px;
+}

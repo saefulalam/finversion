@@ -1,0 +1,79 @@
+.fv-heatmap {
+  display: grid;
+  gap: 3px;
+}
+
+.fv-heatmap__cell {
+  border-radius: var(--radius-sm);
+  aspect-ratio: 1;
+  transition: transform 0.15s, opacity 0.15s;
+  cursor: pointer;
+}
+
+.fv-heatmap__cell:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+
+.fv-heatmap__cell--xs {
+  background: var(--bg-item);
+}
+
+.fv-heatmap__cell--sm {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.fv-heatmap__cell--md {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+.fv-heatmap__cell--lg {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+.fv-heatmap__cell--xl {
+  background: rgba(59, 130, 246, 0.75);
+}
+
+.fv-heatmap__row-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: space-between;
+}
+
+.fv-heatmap__row-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+}
+
+.fv-heatmap__col-labels {
+  display: flex;
+  gap: 3px;
+  justify-content: space-between;
+}
+
+.fv-heatmap__col-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+.fv-heatmap__tooltip {
+  position: absolute;
+  padding: 6px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-inner);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-spatial-item);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 10;
+}

@@ -1,0 +1,78 @@
+.fv-tree-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.fv-tree-view__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.fv-tree-view__item:hover {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.fv-tree-view__item.active {
+  background: var(--accent-gradient);
+  color: #fff;
+  box-shadow: var(--shadow-spatial-btn);
+}
+
+.fv-tree-view__toggle {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.fv-tree-view__item.open .fv-tree-view__toggle {
+  transform: rotate(90deg);
+}
+
+.fv-tree-view__icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.fv-tree-view__children {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fv-tree-view__leaf {
+  padding-left: 28px;
+}
+
+.fv-tree-view__count {
+  margin-left: auto;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--bg-item);
+  box-shadow: var(--shadow-inset-pod);
+  color: var(--text-tertiary);
+}
+
+.fv-tree-view__item.active .fv-tree-view__count {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}

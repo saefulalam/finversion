@@ -1,0 +1,21 @@
+.fv-gesture-area {
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.fv-gesture-area--swipe-x {
+  touch-action: pan-x;
+}
+
+.fv-gesture-area--swipe-y {
+  touch-action: pan-y;
+}
+
+.fv-gesture-area--pinch {
+  touch-action: pinch-zoom;
+}
+
+.fv-gesture-area--none {
+  touch-action: none;
+}

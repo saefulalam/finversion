@@ -1,0 +1,19 @@
+.fv-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fv-radio-group--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.fv-radio-group--sm {
+  gap: 8px;
+}
+
+.fv-radio-group--lg {
+  gap: 16px;
+}

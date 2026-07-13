@@ -9,11 +9,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "@fv-ui/shared": ["../shared/src"]
-    }
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
-  "references": [{ "path": "../shared" }]
+  "include": ["src"]
 }

@@ -1,0 +1,58 @@
+.fv-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fv-radio input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.fv-radio__circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border-outer);
+  background: var(--bg-item);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.fv-radio__circle::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  transform: scale(0);
+  transition: transform 0.2s;
+}
+
+.fv-radio input:checked + .fv-radio__circle {
+  background: var(--accent-gradient);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.fv-radio input:checked + .fv-radio__circle::after {
+  transform: scale(1);
+}
+
+.fv-radio__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.fv-radio:hover .fv-radio__circle {
+  border-color: var(--accent);
+}

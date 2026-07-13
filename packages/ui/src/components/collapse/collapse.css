@@ -1,0 +1,44 @@
+.fv-collapse {
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.25,1,0.5,1);
+}
+
+.fv-collapse__content {
+  padding: 0;
+}
+
+.fv-collapse__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: left;
+  transition: color 0.15s;
+}
+
+.fv-collapse__trigger:hover {
+  color: var(--accent);
+}
+
+.fv-collapse__icon {
+  transition: transform 0.25s cubic-bezier(0.25,1,0.5,1);
+  color: var(--text-tertiary);
+}
+
+.fv-collapse.active .fv-collapse__icon {
+  transform: rotate(180deg);
+}
+
+.fv-collapse__body {
+  padding: 0 0 12px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

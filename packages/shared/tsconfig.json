@@ -5,12 +5,12 @@
     "moduleResolution": "bundler",
     "declaration": true,
     "declarationDir": "dist",
+    "rootDir": "src",
     "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "composite": true
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src"]
 }

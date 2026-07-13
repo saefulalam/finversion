@@ -1,0 +1,63 @@
+.fv-toggle-btn {
+  border: none;
+  padding: 12px 22px;
+  border-radius: var(--radius-xl);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25,1,0.5,1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  font-family: inherit;
+  gap: 8px;
+  white-space: nowrap;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(242,244,247,0.85) 100%);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-spatial-item);
+  border-top: 1px solid rgba(255,255,255,0.6);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.fv-toggle-btn:active {
+  transform: scale(0.97) translateY(1px);
+}
+
+.fv-toggle-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.fv-toggle-btn--active,
+.fv-toggle-btn[aria-pressed="true"] {
+  background: var(--accent-gradient);
+  color: #fff;
+  box-shadow: var(--shadow-spatial-btn);
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.fv-toggle-btn--active:hover,
+.fv-toggle-btn[aria-pressed="true"]:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 0 0 4px var(--accent-soft), var(--shadow-spatial-btn);
+}
+
+.fv-toggle-btn--sm {
+  padding: 7px 14px;
+  font-size: 13px;
+}
+
+.fv-toggle-btn--lg {
+  padding: 14px 28px;
+  font-size: 17px;
+}
+
+[data-fv-theme="dark"] .fv-toggle-btn {
+  background: linear-gradient(180deg, rgba(54,54,58,0.85) 0%, rgba(38,38,42,0.85) 100%);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}

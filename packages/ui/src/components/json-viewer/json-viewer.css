@@ -1,0 +1,65 @@
+.fv-json-viewer {
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.fv-json-viewer__key {
+  color: var(--accent);
+}
+
+.fv-json-viewer__string {
+  color: #24B049;
+}
+
+.fv-json-viewer__number {
+  color: #E68A00;
+}
+
+.fv-json-viewer__boolean {
+  color: #E68A00;
+}
+
+.fv-json-viewer__null {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.fv-json-viewer__bracket {
+  color: var(--text-tertiary);
+}
+
+.fv-json-viewer__toggle {
+  cursor: pointer;
+  color: var(--text-tertiary);
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.fv-json-viewer__toggle:hover {
+  color: var(--text-primary);
+}
+
+.fv-json-viewer__toggle-icon {
+  transition: transform 0.2s;
+}
+
+.fv-json-viewer__toggle-icon--expanded {
+  transform: rotate(90deg);
+}
+
+.fv-json-viewer__ellipsis {
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.fv-json-viewer__children {
+  padding-left: 20px;
+}

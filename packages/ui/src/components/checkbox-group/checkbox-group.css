@@ -1,0 +1,27 @@
+.fv-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fv-checkbox-group--row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.fv-checkbox-group--sm {
+  gap: 8px;
+}
+
+.fv-checkbox-group--lg {
+  gap: 16px;
+}
+
+.fv-checkbox-group__legend {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  letter-spacing: -0.1px;
+}

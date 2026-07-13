@@ -1,0 +1,116 @@
+.fv-ai-response {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.fv-ai-response p {
+  margin: 8px 0;
+}
+
+.fv-ai-response p:first-child {
+  margin-top: 0;
+}
+
+.fv-ai-response p:last-child {
+  margin-bottom: 0;
+}
+
+.fv-ai-response strong {
+  font-weight: 700;
+}
+
+.fv-ai-response em {
+  font-style: italic;
+}
+
+.fv-ai-response code {
+  background: var(--bg-item);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-family: monospace;
+}
+
+.fv-ai-response pre {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  margin: 12px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  border: 1px solid var(--border-inner);
+}
+
+[data-fv-theme="dark"] .fv-ai-response pre {
+  border-color: var(--border-outer);
+}
+
+.fv-ai-response pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.fv-ai-response ul,
+.fv-ai-response ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.fv-ai-response li {
+  margin: 4px 0;
+}
+
+.fv-ai-response blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+  margin: 12px 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.fv-ai-response a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.fv-ai-response a:hover {
+  text-decoration: underline;
+}
+
+.fv-ai-response table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.fv-ai-response th,
+.fv-ai-response td {
+  padding: 8px 12px;
+  border: 1px solid var(--border-outer);
+  text-align: left;
+  font-size: 13px;
+}
+
+.fv-ai-response th {
+  background: var(--bg-item);
+  font-weight: 600;
+}
+
+.fv-ai-response h1,
+.fv-ai-response h2,
+.fv-ai-response h3,
+.fv-ai-response h4 {
+  font-weight: 700;
+  margin: 16px 0 8px;
+  color: var(--text-primary);
+}
+
+.fv-ai-response h1 { font-size: 20px; }
+.fv-ai-response h2 { font-size: 18px; }
+.fv-ai-response h3 { font-size: 16px; }
+.fv-ai-response h4 { font-size: 15px; }

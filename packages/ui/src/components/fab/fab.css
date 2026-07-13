@@ -1,0 +1,78 @@
+.fv-fab {
+  position: fixed;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-spatial-btn);
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.fv-fab:hover {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-spatial-btn);
+}
+
+[data-fv-theme="dark"] .fv-fab {
+  box-shadow: var(--shadow-spatial-btn);
+}
+
+[data-fv-theme="dark"] .fv-fab:hover {
+  box-shadow: var(--shadow-spatial-btn);
+}
+
+.fv-fab:active {
+  transform: scale(0.95);
+}
+
+.fv-fab--sm {
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+}
+
+.fv-fab--lg {
+  width: 64px;
+  height: 64px;
+  font-size: 28px;
+}
+
+.fv-fab--extended {
+  width: auto;
+  border-radius: var(--radius-xl);
+  padding: 0 20px;
+  gap: 8px;
+}
+
+.fv-fab__label {
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.fv-fab--bottom-left {
+  right: auto;
+  left: 24px;
+}
+
+.fv-fab--top-right {
+  bottom: auto;
+  top: 24px;
+}
+
+.fv-fab--top-left {
+  bottom: auto;
+  top: 24px;
+  right: auto;
+  left: 24px;
+}

@@ -1,0 +1,118 @@
+.fv-range-slider {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.fv-range-slider__track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--bg-item);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-inset-pod);
+  transform: translateY(-50%);
+}
+
+.fv-range-slider__fill {
+  position: absolute;
+  top: 50%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--accent-gradient);
+  transform: translateY(-50%);
+}
+
+.fv-range-slider__thumb {
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(0,0,0,0.05);
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  transition: box-shadow 0.2s, transform 0.15s;
+  outline: none;
+  border: none;
+  touch-action: none;
+}
+
+.fv-range-slider__thumb:hover {
+  box-shadow: 0 0 0 6px var(--accent-soft),
+    0 2px 8px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(0,0,0,0.05);
+}
+
+.fv-range-slider__thumb:active,
+.fv-range-slider__thumb:focus {
+  cursor: grabbing;
+  box-shadow: 0 0 0 8px var(--accent-soft),
+    0 2px 12px rgba(0,0,0,0.2),
+    0 0 0 1px var(--accent);
+}
+
+.fv-range-slider__thumb:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fv-range-slider__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.fv-range-slider__value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.fv-range-slider--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.fv-range-slider--sm .fv-range-slider__thumb {
+  width: 18px;
+  height: 18px;
+}
+
+.fv-range-slider--sm .fv-range-slider__track {
+  height: 4px;
+}
+
+.fv-range-slider--sm .fv-range-slider__fill {
+  height: 4px;
+}
+
+.fv-range-slider--lg .fv-range-slider__thumb {
+  width: 26px;
+  height: 26px;
+}
+
+.fv-range-slider--lg .fv-range-slider__track {
+  height: 8px;
+}
+
+.fv-range-slider--lg .fv-range-slider__fill {
+  height: 8px;
+}

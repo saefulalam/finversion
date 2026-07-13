@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="id" data-fv-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinVersion — Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="src/css/fv-ui.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif; background: var(--bg-body); color: var(--text-primary); display: flex; height: 100vh; overflow: hidden; }
+
+    /* Sidebar */
+    .dash-sidebar { width: 260px; background: var(--bg-card); border-right: 1px solid var(--border-outer); display: flex; flex-direction: column; flex-shrink: 0; }
+    .dash-sidebar__logo { padding: 20px 24px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border-outer); }
+    .dash-sidebar__logo-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--accent-gradient); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 16px; }
+    .dash-sidebar__logo-text { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; }
+    .dash-sidebar__nav { flex: 1; padding: 12px; overflow-y: auto; }
+    .dash-sidebar__section { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; padding: 16px 12px 8px; }
+    .dash-sidebar__item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-md); color: var(--text-secondary); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; text-decoration: none; }
+    .dash-sidebar__item:hover { background: var(--accent-soft); color: var(--text-primary); }
+    .dash-sidebar__item.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+    .dash-sidebar__item i { font-size: 18px; width: 20px; text-align: center; }
+    .dash-sidebar__item .badge { margin-left: auto; }
+    .dash-sidebar__footer { padding: 16px; border-top: 1px solid var(--border-outer); }
+    .dash-sidebar__user { display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: var(--radius-md); cursor: pointer; }
+    .dash-sidebar__user:hover { background: var(--accent-soft); }
+    .dash-sidebar__user-info { flex: 1; min-width: 0; }
+    .dash-sidebar__user-name { font-size: 13px; font-weight: 600; }
+    .dash-sidebar__user-email { font-size: 11px; color: var(--text-tertiary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* Main */
+    .dash-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+    /* Topbar */
+    .dash-topbar { display: flex; align-items: center; gap: 16px; padding: 16px 32px; border-bottom: 1px solid var(--border-outer); background: var(--bg-card); flex-shrink: 0; }
+    .dash-topbar__title { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+    .dash-topbar__spacer { flex: 1; }
+    .dash-topbar__search { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: var(--bg-item); border: 1px solid var(--border-outer); border-radius: var(--radius-md); min-width: 240px; cursor: pointer; transition: border-color 0.15s; }
+    .dash-topbar__search:hover { border-color: var(--accent); }
+    .dash-topbar__search i { color: var(--text-tertiary); font-size: 14px; }
+    .dash-topbar__search span { color: var(--text-tertiary); font-size: 13px; }
+    .dash-topbar__search kbd { margin-left: auto; font-size: 11px; color: var(--text-tertiary); background: var(--bg-card); border: 1px solid var(--border-outer); border-radius: 4px; padding: 1px 5px; font-family: inherit; }
+
+    /* Content */
+    .dash-content { flex: 1; overflow-y: auto; padding: 28px 32px; }
+
+    /* Stats grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .stat-card { background: var(--bg-card); border: 1px solid var(--border-outer); border-radius: var(--radius-lg); padding: 20px; }
+    .stat-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .stat-card__label { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+    .stat-card__icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .stat-card__value { font-size: 28px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
+    .stat-card__change { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 600; margin-top: 8px; padding: 2px 8px; border-radius: 999px; }
+    .stat-card__change.up { color: #24B049; background: rgba(36,176,73,0.08); }
+    .stat-card__change.down { color: #E63946; background: rgba(230,57,70,0.08); }
+    .stat-card__change.flat { color: var(--text-tertiary); background: var(--bg-item); }
+
+    /* Grid layout */
+    .dash-grid { display: grid; grid-template-columns: 1fr 380px; gap: 20px; }
+    .dash-grid--full { grid-template-columns: 1fr; }
+
+    /* Section */
+    .dash-section { background: var(--bg-card); border: 1px solid var(--border-outer); border-radius: var(--radius-lg); }
+    .dash-section__head { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid var(--border-outer); }
+    .dash-section__title { font-size: 15px; font-weight: 700; }
+    .dash-section__body { padding: 20px; }
+    .dash-section__body--flush { padding: 0; }
+
+    /* Table */
+    .dash-table { width: 100%; border-collapse: collapse; }
+    .dash-table th { text-align: left; font-size: 12px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; padding: 12px 20px; border-bottom: 1px solid var(--border-outer); }
+    .dash-table td { padding: 14px 20px; font-size: 14px; border-bottom: 1px solid var(--border-outer); }
+    .dash-table tr:last-child td { border-bottom: none; }
+    .dash-table tr:hover td { background: var(--accent-soft); }
+    .dash-table__status { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; }
+    .dash-table__dot { width: 7px; height: 7px; border-radius: 50%; }
+    .dash-table__dot.green { background: #24B049; }
+    .dash-table__dot.yellow { background: #E68A00; }
+    .dash-table__dot.red { background: #E63946; }
+    .dash-table__dot.blue { background: #3897FF; }
+    .dash-table__name { font-weight: 600; }
+    .dash-table__sub { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+
+    /* Chart area */
+    .dash-chart { height: 220px; display: flex; align-items: flex-end; gap: 8px; padding: 0 4px; }
+    .dash-chart__bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .dash-chart__bar { width: 100%; border-radius: 6px 6px 0 0; transition: all 0.2s; cursor: pointer; min-height: 4px; }
+    .dash-chart__bar:hover { filter: brightness(1.1); }
+    .dash-chart__bar.blue { background: var(--accent-gradient); }
+    .dash-chart__bar.green { background: linear-gradient(180deg, #4DE077, #24B049); }
+    .dash-chart__bar.light { background: var(--bg-item); }
+    .dash-chart__label { font-size: 11px; color: var(--text-tertiary); }
+    .dash-chart__legend { display: flex; gap: 16px; margin-top: 16px; justify-content: center; }
+    .dash-chart__legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+    .dash-chart__legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+    /* Activity */
+    .dash-activity { display: flex; flex-direction: column; }
+    .dash-activity__item { display: flex; gap: 12px; padding: 14px 0; position: relative; }
+    .dash-activity__item:not(:last-child)::after { content: ''; position: absolute; left: 15px; top: 42px; bottom: 0; width: 1px; background: var(--border-outer); }
+    .dash-activity__icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; z-index: 1; }
+    .dash-activity__icon.green { background: rgba(36,176,73,0.1); color: #24B049; }
+    .dash-activity__icon.blue { background: rgba(56,151,255,0.1); color: #3897FF; }
+    .dash-activity__icon.orange { background: rgba(230,138,0,0.1); color: #E68A00; }
+    .dash-activity__icon.red { background: rgba(230,57,70,0.1); color: #E63946; }
+    .dash-activity__text { font-size: 13px; line-height: 1.5; }
+    .dash-activity__text strong { font-weight: 600; }
+    .dash-activity__time { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+
+    /* Empty state */
+    .dash-empty { text-align: center; padding: 40px 20px; }
+    .dash-empty__icon { font-size: 40px; color: var(--text-tertiary); margin-bottom: 12px; }
+    .dash-empty__text { font-size: 14px; color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="dash-sidebar">
+  <div class="dash-sidebar__logo">
+    <div class="dash-sidebar__logo-icon">FV</div>
+    <div class="dash-sidebar__logo-text">FinVersion</div>
+  </div>
+  <nav class="dash-sidebar__nav">
+    <div class="dash-sidebar__section">Menu</div>
+    <a class="dash-sidebar__item active" href="#"><i class="bi bi-grid-1x2"></i> Dashboard</a>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-wallet2"></i> Budget</a>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-graph-up-arrow"></i> Transaksi</a>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-file-earmark-bar-graph"></i> Laporan</a>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-calendar-range"></i> Perencanaan</a>
+
+    <div class="dash-sidebar__section">Manajemen</div>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-people"></i> Tim</a>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-folder2"></i> Proyek <span class="fv-badge fv-badge--accent" style="font-size:10px;">12</span></a>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-receipt"></i> Invoice</a>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-file-earmark-text"></i> Kontrak</a>
+
+    <div class="dash-sidebar__section">Sistem</div>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-gear"></i> Pengaturan</a>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-shield-lock"></i> Keamanan</a>
+    <a class="dash-sidebar__item" href="#"><i class="bi bi-bell"></i> Notifikasi</a>
+  </nav>
+  <div class="dash-sidebar__footer">
+    <div class="dash-sidebar__user">
+      <div class="fv-avatar fv-avatar--sm" style="background:var(--accent-gradient);color:#fff;font-weight:700;font-size:12px;">AK</div>
+      <div class="dash-sidebar__user-info">
+        <div class="dash-sidebar__user-name">Andi Kurniawan</div>
+        <div class="dash-sidebar__user-email">andi@finversion.id</div>
+      </div>
+      <i class="bi bi-chevron-right" style="color:var(--text-tertiary);font-size:12px;"></i>
+    </div>
+  </div>
+</aside>
+
+<!-- Main -->
+<div class="dash-main">
+  <!-- Topbar -->
+  <header class="dash-topbar">
+    <h1 class="dash-topbar__title">Dashboard</h1>
+    <div class="dash-topbar__spacer"></div>
+    <div class="dash-topbar__search" onclick="document.getElementById('dashSpotlight').classList.add('open')">
+      <i class="bi bi-search"></i>
+      <span>Cari...</span>
+      <kbd>Ctrl K</kbd>
+    </div>
+    <button class="fv-btn fv-btn--secondary fv-btn--sm" style="position:relative;" onclick="FV.toast('Tidak ada notifikasi baru','accent')">
+      <i class="bi bi-bell"></i>
+      <span style="position:absolute;top:-2px;right:-2px;width:8px;height:8px;background:#E63946;border-radius:50%;border:2px solid var(--bg-card);"></span>
+    </button>
+    <button class="fv-btn fv-btn--secondary fv-btn--sm" onclick="FV.toggleTheme()">
+      <i class="bi bi-moon" data-fv-toggle-theme></i>
+    </button>
+  </header>
+
+  <!-- Content -->
+  <div class="dash-content">
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-card__header">
+          <span class="stat-card__label">Total Budget</span>
+          <div class="stat-card__icon" style="background:rgba(56,151,255,0.1);color:#3897FF;"><i class="bi bi-wallet2"></i></div>
+        </div>
+        <div class="stat-card__value">Rp 2.4M</div>
+        <div class="stat-card__change up"><i class="bi bi-arrow-up" style="font-size:10px;"></i> +12.5% dari Q2</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__header">
+          <span class="stat-card__label">Transaksi</span>
+          <div class="stat-card__icon" style="background:rgba(36,176,73,0.1);color:#24B049;"><i class="bi bi-graph-up-arrow"></i></div>
+        </div>
+        <div class="stat-card__value">847</div>
+        <div class="stat-card__change up"><i class="bi bi-arrow-up" style="font-size:10px;"></i> +8.2% dari bulan lalu</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__header">
+          <span class="stat-card__label">Tim Aktif</span>
+          <div class="stat-card__icon" style="background:rgba(230,138,0,0.1);color:#E68A00;"><i class="bi bi-people"></i></div>
+        </div>
+        <div class="stat-card__value">24</div>
+        <div class="stat-card__change flat">Stabil</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__header">
+          <span class="stat-card__label">Tunggakan</span>
+          <div class="stat-card__icon" style="background:rgba(230,57,70,0.1);color:#E63946;"><i class="bi bi-exclamation-triangle"></i></div>
+        </div>
+        <div class="stat-card__value">3</div>
+        <div class="stat-card__change down"><i class="bi bi-arrow-down" style="font-size:10px;"></i> -2 dari kemarin</div>
+      </div>
+    </div>
+
+    <!-- Main grid -->
+    <div class="dash-grid">
+      <!-- Left: Table + Chart -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <!-- Recent Transactions -->
+        <div class="dash-section">
+          <div class="dash-section__head">
+            <span class="dash-section__title">Transaksi Terbaru</span>
+            <button class="fv-btn fv-btn--secondary fv-btn--sm">Lihat Semua</button>
+          </div>
+          <div class="dash-section__body--flush">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Proyek</th>
+                  <th> Nominal</th>
+                  <th>Status</th>
+                  <th>Tanggal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="dash-table__name">Website Redesign</div>
+                    <div class="dash-table__sub">Klien: TechCorp</div>
+                  </td>
+                  <td style="font-weight:700;">Rp 45.000.000</td>
+                  <td><span class="dash-table__status"><span class="dash-table__dot green"></span> Selesai</span></td>
+                  <td style="color:var(--text-secondary);">12 Jul 2026</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="dash-table__name">Mobile App v2</div>
+                    <div class="dash-table__sub">Klien: StartupXYZ</div>
+                  </td>
+                  <td style="font-weight:700;">Rp 120.000.000</td>
+                  <td><span class="dash-table__status"><span class="dash-table__dot blue"></i></span> Proses</span></td>
+                  <td style="color:var(--text-secondary);">11 Jul 2026</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="dash-table__name">API Integration</div>
+                    <div class="dash-table__sub">Klien: DataFlow</div>
+                  </td>
+                  <td style="font-weight:700;">Rp 28.500.000</td>
+                  <td><span class="dash-table__status"><span class="dash-table__dot yellow"></span> Review</span></td>
+                  <td style="color:var(--text-secondary);">10 Jul 2026</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="dash-table__name">Brand Guidelines</div>
+                    <div class="dash-table__sub">Klien: FreshMarket</div>
+                  </td>
+                  <td style="font-weight:700;">Rp 15.000.000</td>
+                  <td><span class="dash-table__status"><span class="dash-table__dot green"></span> Selesai</span></td>
+                  <td style="color:var(--text-secondary);">09 Jul 2026</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="dash-table__name">CRM Dashboard</div>
+                    <div class="dash-table__sub">Klien: LogistikPro</div>
+                  </td>
+                  <td style="font-weight:700;">Rp 67.000.000</td>
+                  <td><span class="dash-table__status"><span class="dash-table__dot red"></span> Terlambat</span></td>
+                  <td style="color:var(--text-secondary);">08 Jul 2026</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="dash-section">
+          <div class="dash-section__head">
+            <span class="dash-section__title">Pendapatan Bulanan</span>
+            <div style="display:flex;gap:8px;">
+              <button class="fv-btn fv-btn--primary fv-btn--sm">6 Bulan</button>
+              <button class="fv-btn fv-btn--secondary fv-btn--sm">12 Bulan</button>
+            </div>
+          </div>
+          <div class="dash-section__body">
+            <div class="dash-chart">
+              <div class="dash-chart__bar-group">
+                <div class="dash-chart__bar blue" style="height:45%;"></div>
+                <span class="dash-chart__label">Jan</span>
+              </div>
+              <div class="dash-chart__bar-group">
+                <div class="dash-chart__bar blue" style="height:62%;"></div>
+                <span class="dash-chart__label">Feb</span>
+              </div>
+              <div class="dash-chart__bar-group">
+                <div class="dash-chart__bar blue" style="height:38%;"></div>
+                <span class="dash-chart__label">Mar</span>
+              </div>
+              <div class="dash-chart__bar-group">
+                <div class="dash-chart__bar blue" style="height:75%;"></div>
+                <span class="dash-chart__label">Apr</span>
+              </div>
+              <div class="dash-chart__bar-group">
+                <div class="dash-chart__bar blue" style="height:55%;"></div>
+                <span class="dash-chart__label">Mei</span>
+              </div>
+              <div class="dash-chart__bar-group">
+                <div class="dash-chart__bar blue" style="height:88%;"></div>
+                <span class="dash-chart__label">Jun</span>
+              </div>
+              <div class="dash-chart__bar-group">
+                <div class="dash-chart__bar green" style="height:92%;"></div>
+                <span class="dash-chart__label">Jul</span>
+              </div>
+            </div>
+            <div class="dash-chart__legend">
+              <div class="dash-chart__legend-item"><div class="dash-chart__legend-dot" style="background:var(--accent);"></div> Pendapatan</div>
+              <div class="dash-chart__legend-item"><div class="dash-chart__legend-dot" style="background:#24B049;"></div> Bulan ini</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Activity + Quick Actions -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <!-- Activity -->
+        <div class="dash-section">
+          <div class="dash-section__head">
+            <span class="dash-section__title">Aktivitas Terbaru</span>
+            <button class="fv-btn fv-btn--secondary fv-btn--sm">Filter</button>
+          </div>
+          <div class="dash-section__body">
+            <div class="dash-activity">
+              <div class="dash-activity__item">
+                <div class="dash-activity__icon green"><i class="bi bi-check-lg"></i></div>
+                <div>
+                  <div class="dash-activity__text"><strong>Website Redesign</strong> telah selesai dan dikirim ke klien.</div>
+                  <div class="dash-activity__time">2 jam yang lalu</div>
+                </div>
+              </div>
+              <div class="dash-activity__item">
+                <div class="dash-activity__icon blue"><i class="bi bi-person-plus"></i></div>
+                <div>
+                  <div class="dash-activity__text"><strong>Sari Dewi</strong> bergabung ke proyek Mobile App v2.</div>
+                  <div class="dash-activity__time">5 jam yang lalu</div>
+                </div>
+              </div>
+              <div class="dash-activity__item">
+                <div class="dash-activity__icon orange"><i class="bi bi-clock-history"></i></div>
+                <div>
+                  <div class="dash-activity__text"><strong>API Integration</strong> menunggu review dari klien.</div>
+                  <div class="dash-activity__time">1 hari yang lalu</div>
+                </div>
+              </div>
+              <div class="dash-activity__item">
+                <div class="dash-activity__icon red"><i class="bi bi-exclamation-circle"></i></div>
+                <div>
+                  <div class="dash-activity__text"><strong>CRM Dashboard</strong> melewati deadline 3 hari.</div>
+                  <div class="dash-activity__time">2 hari yang lalu</div>
+                </div>
+              </div>
+              <div class="dash-activity__item">
+                <div class="dash-activity__icon green"><i class="bi bi-cash-stack"></i></div>
+                <div>
+                  <div class="dash-activity__text">Pembayaran <strong>Rp 45.000.000</strong> diterima dari TechCorp.</div>
+                  <div class="dash-activity__time">3 hari yang lalu</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dash-section">
+          <div class="dash-section__head">
+            <span class="dash-section__title">Aksi Cepat</span>
+          </div>
+          <div class="dash-section__body">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <button class="fv-btn fv-btn--primary" style="justify-content:flex-start;gap:10px;" onclick="FV.toast('Membuat proyek baru...','accent')">
+                <i class="bi bi-plus-lg"></i> Buat Proyek Baru
+              </button>
+              <button class="fv-btn fv-btn--secondary" style="justify-content:flex-start;gap:10px;" onclick="FV.toast('Membuat invoice...','accent')">
+                <i class="bi bi-receipt"></i> Buat Invoice
+              </button>
+              <button class="fv-btn fv-btn--secondary" style="justify-content:flex-start;gap:10px;" onclick="FV.toast('Mengunduh laporan...','accent')">
+                <i class="bi bi-download"></i> Unduh Laporan
+              </button>
+              <button class="fv-btn fv-btn--secondary" style="justify-content:flex-start;gap:10px;" onclick="FV.toast('Mengundang anggota...','accent')">
+                <i class="bi bi-person-plus"></i> Undang Anggota
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Budget Overview -->
+        <div class="dash-section">
+          <div class="dash-section__head">
+            <span class="dash-section__title">Anggaran Q3</span>
+          </div>
+          <div class="dash-section__body">
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+                  <span style="font-weight:600;">Operasional</span>
+                  <span style="color:var(--text-secondary);">Rp 850Jt / Rp 1.2M</span>
+                </div>
+                <div class="fv-progress"><div class="fv-progress__bar" style="width:71%;background:var(--accent-gradient);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+                  <span style="font-weight:600;">Marketing</span>
+                  <span style="color:var(--text-secondary);">Rp 320Jt / Rp 500Jt</span>
+                </div>
+                <div class="fv-progress"><div class="fv-progress__bar" style="width:64%;background:linear-gradient(90deg,#4DE077,#24B049);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+                  <span style="font-weight:600;">R&D</span>
+                  <span style="color:var(--text-secondary);">Rp 180Jt / Rp 400Jt</span>
+                </div>
+                <div class="fv-progress"><div class="fv-progress__bar" style="width:45%;background:linear-gradient(90deg,#FFB340,#E68A00);"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+                  <span style="font-weight:600;">Infrastruktur</span>
+                  <span style="color:var(--text-secondary);">Rp 95Jt / Rp 300Jt</span>
+                </div>
+                <div class="fv-progress"><div class="fv-progress__bar" style="width:32%;background:linear-gradient(90deg,#9b87f5,#7c5ce0);"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Spotlight overlay -->
+<div class="fv-spotlight" id="dashSpotlight">
+  <div class="fv-spotlight__dialog">
+    <div class="fv-spotlight__input-wrap">
+      <i class="bi bi-search"></i>
+      <input class="fv-spotlight__input" placeholder="Cari proyek, invoice, atau perintah..." oninput="filterDashSpotlight(this)">
+      <span class="fv-spotlight__kbd">ESC</span>
+    </div>
+    <div class="fv-spotlight__results">
+      <div class="fv-spotlight__item active"><i class="bi bi-wallet2 fv-spotlight__item-icon"></i><span class="fv-spotlight__item-text">Budget Q3</span><span class="fv-spotlight__item-hint">Ringkasan</span></div>
+      <div class="fv-spotlight__item"><i class="bi bi-graph-up-arrow fv-spotlight__item-icon"></i><span class="fv-spotlight__item-text">Transaksi Terbaru</span><span class="fv-spotlight__item-hint">Daftar</span></div>
+      <div class="fv-spotlight__item"><i class="bi bi-plus-lg fv-spotlight__item-icon"></i><span class="fv-spotlight__item-text">Buat Proyek Baru</span><span class="fv-spotlight__item-hint">Aksi</span></div>
+      <div class="fv-spotlight__item"><i class="bi bi-receipt fv-spotlight__item-icon"></i><span class="fv-spotlight__item-text">Buat Invoice</span><span class="fv-spotlight__item-hint">Aksi</span></div>
+      <div class="fv-spotlight__item"><i class="bi bi-people fv-spotlight__item-icon"></i><span class="fv-spotlight__item-text">Tim</span><span class="fv-spotlight__item-hint">Manajemen</span></div>
+      <div class="fv-spotlight__item" onclick="FV.toggleTheme();document.getElementById('dashSpotlight').classList.remove('open')"><i class="bi bi-moon fv-spotlight__item-icon"></i><span class="fv-spotlight__item-text">Ubah tema</span><span class="fv-spotlight__item-hint">Perintah</span></div>
+    </div>
+    <div class="fv-spotlight__footer">
+      <span><span class="fv-spotlight__kbd">&uarr;</span><span class="fv-spotlight__kbd">&darr;</span> Navigasi</span>
+      <span><span class="fv-spotlight__kbd">&crarr;</span> Pilih</span>
+      <span><span class="fv-spotlight__kbd">ESC</span> Tutup</span>
+    </div>
+  </div>
+</div>
+
+<script src="src/js/fv-ui.js"></script>
+<script>
+// Spotlight
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('dashSpotlight').classList.add('open');
+    setTimeout(() => document.querySelector('#dashSpotlight .fv-spotlight__input').focus(), 100);
+  }
+});
+document.addEventListener('click', (e) => {
+  const sp = document.getElementById('dashSpotlight');
+  if (sp && e.target === sp) sp.classList.remove('open');
+});
+function filterDashSpotlight(input) {
+  const q = input.value.toLowerCase();
+  const items = document.querySelectorAll('#dashSpotlight .fv-spotlight__item');
+  let visCount = 0;
+  items.forEach(item => {
+    const text = item.querySelector('.fv-spotlight__item-text')?.textContent.toLowerCase() || '';
+    const hint = item.querySelector('.fv-spotlight__item-hint')?.textContent.toLowerCase() || '';
+    const match = text.includes(q) || hint.includes(q);
+    item.style.display = match ? '' : 'none';
+    if (match) { visCount++; item.classList.remove('active'); }
+  });
+  if (visCount > 0) {
+    const first = [...items].find(i => i.style.display !== 'none');
+    if (first) first.classList.add('active');
+  }
+}
+(function() {
+  const sp = document.getElementById('dashSpotlight');
+  if (!sp) return;
+  sp.addEventListener('keydown', (e) => {
+    const items = [...sp.querySelectorAll('.fv-spotlight__item')].filter(i => i.style.display !== 'none');
+    const cur = items.findIndex(i => i.classList.contains('active'));
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      items[cur]?.classList.remove('active');
+      const next = cur < items.length - 1 ? cur + 1 : 0;
+      items[next]?.classList.add('active');
+      items[next]?.scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      items[cur]?.classList.remove('active');
+      const prev = cur > 0 ? cur - 1 : items.length - 1;
+      items[prev]?.classList.add('active');
+      items[prev]?.scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      items[cur]?.click();
+    } else if (e.key === 'Escape') {
+      sp.classList.remove('open');
+    }
+  });
+})();
+</script>
+</body>
+</html>

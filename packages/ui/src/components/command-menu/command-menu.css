@@ -1,0 +1,114 @@
+.fv-command-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 20vh;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.fv-command-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fv-command-menu__panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-spatial-card);
+  width: 90%;
+  max-width: 560px;
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(12px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.25,1,0.5,1);
+  overflow: hidden;
+}
+
+.fv-command-menu.open .fv-command-menu__panel {
+  transform: translateY(0) scale(1);
+}
+
+.fv-command-menu__input {
+  width: 100%;
+  padding: 18px 24px;
+  border: none;
+  border-bottom: 1px solid var(--border-outer);
+  background: transparent;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-primary);
+  outline: none;
+  font-family: inherit;
+}
+
+.fv-command-menu__input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.fv-command-menu__list {
+  overflow-y: auto;
+  flex: 1;
+  padding: 8px;
+}
+
+.fv-command-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.fv-command-menu__item:hover,
+.fv-command-menu__item.active {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.fv-command-menu__item i {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+.fv-command-menu__item:hover i,
+.fv-command-menu__item.active i {
+  color: var(--accent);
+}
+
+.fv-command-menu__item-text {
+  flex: 1;
+}
+
+.fv-command-menu__item-shortcut {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-family: inherit;
+}
+
+.fv-command-menu__empty {
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+
+[data-fv-theme="dark"] .fv-command-menu__panel {
+  border: 1px solid var(--border-outer);
+}

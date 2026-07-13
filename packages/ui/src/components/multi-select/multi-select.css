@@ -1,0 +1,119 @@
+.fv-multi-select {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background: var(--bg-item);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-inset-pod);
+  min-height: 44px;
+  align-items: center;
+  cursor: text;
+  transition: all 0.2s;
+}
+
+.fv-multi-select:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-inset-pod);
+}
+
+.fv-multi-select--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fv-multi-select__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.fv-multi-select__tag-remove {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  outline: none;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.fv-multi-select__tag-remove:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.fv-multi-select__input {
+  flex: 1;
+  min-width: 80px;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.fv-multi-select__input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.fv-multi-select__input:disabled {
+  cursor: not-allowed;
+}
+
+.fv-multi-select--sm {
+  padding: 6px 12px;
+  min-height: 36px;
+  gap: 4px;
+}
+
+.fv-multi-select--sm .fv-multi-select__tag {
+  padding: 3px 8px;
+  font-size: 12px;
+}
+
+.fv-multi-select--sm .fv-multi-select__input {
+  font-size: 13px;
+}
+
+.fv-multi-select--lg {
+  padding: 12px 20px;
+  min-height: 52px;
+  gap: 8px;
+}
+
+.fv-multi-select--lg .fv-multi-select__tag {
+  padding: 5px 12px;
+  font-size: 14px;
+}
+
+.fv-multi-select--lg .fv-multi-select__input {
+  font-size: 17px;
+}
+
+[data-fv-theme="dark"] .fv-multi-select {
+  border: 1px solid var(--border-outer);
+}

@@ -1,0 +1,74 @@
+.fv-snackbar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--bg-card);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-spatial-card);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.25,1,0.5,1);
+}
+
+.fv-snackbar.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.fv-snackbar__message {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.fv-snackbar__action {
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.fv-snackbar__action:hover {
+  background: var(--accent-soft);
+}
+
+.fv-snackbar__close {
+  border: none;
+  background: none;
+  color: var(--text-tertiary);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.fv-snackbar__close:hover {
+  color: var(--text-primary);
+  background: var(--bg-item);
+}
+
+[data-fv-theme="dark"] .fv-snackbar {
+  border: 1px solid var(--border-outer);
+}

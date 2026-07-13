@@ -1,0 +1,53 @@
+.fv-property-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.fv-property-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-outer);
+}
+
+.fv-property-list__item:last-child {
+  border-bottom: none;
+}
+
+.fv-property-list__label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.fv-property-list__value {
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.fv-property-list--bordered {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  padding: 4px 16px;
+}
+
+.fv-property-list--bordered .fv-property-list__item {
+  border-bottom: 1px solid var(--border-outer);
+}
+
+.fv-property-list--bordered .fv-property-list__item:last-child {
+  border-bottom: none;
+}
+
+.fv-property-list--striped .fv-property-list__item:nth-child(even) {
+  background: var(--bg-item);
+  margin: 0 -16px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.fv-property-list--compact .fv-property-list__item {
+  padding: 4px 0;
+}

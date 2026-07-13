@@ -1,0 +1,87 @@
+.fv-diff-viewer {
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-inner);
+  overflow: hidden;
+}
+
+.fv-diff-viewer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg-item);
+  border-bottom: 1px solid var(--border-outer);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.fv-diff-viewer__line {
+  display: flex;
+  padding: 0 16px;
+}
+
+.fv-diff-viewer__line-number {
+  width: 48px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 12px;
+  color: var(--text-tertiary);
+  user-select: none;
+}
+
+.fv-diff-viewer__line-prefix {
+  width: 20px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.fv-diff-viewer__line-content {
+  flex: 1;
+  white-space: pre;
+}
+
+.fv-diff-viewer__line--added {
+  background: rgba(36,176,73,0.1);
+}
+
+.fv-diff-viewer__line--added .fv-diff-viewer__line-prefix {
+  color: var(--color-success);
+}
+
+.fv-diff-viewer__line--removed {
+  background: rgba(230,57,70,0.1);
+}
+
+.fv-diff-viewer__line--removed .fv-diff-viewer__line-prefix {
+  color: var(--color-danger);
+}
+
+.fv-diff-viewer__line--unchanged {
+  color: var(--text-tertiary);
+}
+
+.fv-diff-viewer__line--highlight {
+  background: rgba(0,113,227,0.08);
+}
+
+.fv-diff-viewer__stats {
+  display: flex;
+  gap: 16px;
+  padding: 10px 16px;
+  background: var(--bg-item);
+  border-top: 1px solid var(--border-outer);
+  font-size: 12px;
+}
+
+.fv-diff-viewer__stat--added {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.fv-diff-viewer__stat--removed {
+  color: var(--color-danger);
+  font-weight: 600;
+}
