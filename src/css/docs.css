@@ -294,7 +294,12 @@
   border: 1px solid var(--border-inner);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-spatial-card);
-  margin-bottom: 20px; overflow: clip;
+  margin-bottom: 20px; overflow: visible;
+  position: relative; z-index: 0;
+}
+.component-block:has(.fv-select.open),
+.component-block:has(.fv-ns-wrap.open) {
+  z-index: 10;
 }
 .component-block__head {
   display: flex; align-items: center; justify-content: space-between;
@@ -340,6 +345,8 @@
 .component-block__preview .fv-tour,
 .component-block__preview .fv-tour__overlay,
 .component-block__preview .fv-dropdown__menu,
+.component-block__preview .fv-select__dropdown,
+.component-block__preview .fv-ns-dropdown,
 .component-block__preview .fv-user-menu__menu,
 .component-block__preview .fv-mega-menu__panel,
 .component-block__preview .fv-tooltip,
