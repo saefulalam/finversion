@@ -2409,11 +2409,54 @@ m.close();</pre>
           <button class="fv-tab" data-fv-tab="t2"><i class="bi bi-diagram-3"></i> Skenario</button>
           <button class="fv-tab" data-fv-tab="t3"><i class="bi bi-gear"></i> Settings</button>
         </div>
-        <div class="fv-tab-panel active" data-fv-panel="t1" style="padding:20px 0;"><i class="bi bi-check-circle" style="color:var(--accent);"></i> 48 checkpoints tersimpan.</div>
-        <div class="fv-tab-panel" data-fv-panel="t2" style="padding:20px 0;">
-          <div style="display:flex;gap:8px;"><span class="fv-badge fv-badge--accent fv-badge--dot">Main</span><span class="fv-badge fv-badge--success fv-badge--dot">Optimis</span><span class="fv-badge fv-badge--warning fv-badge--dot">Pessimis</span></div>
+        <div class="fv-tab-panel active" data-fv-panel="t1" style="padding:20px 0;">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;align-items:center;gap:10px;"><i class="bi bi-check-circle" style="color:var(--accent);font-size:18px;"></i><div><div style="font-weight:600;">v1.3.2</div><div style="font-size:12px;color:var(--text-tertiary);">2 jam lalu</div></div></div>
+              <span class="fv-badge fv-badge--success fv-badge--dot">Final</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;align-items:center;gap:10px;"><i class="bi bi-clock" style="color:var(--text-tertiary);font-size:18px;"></i><div><div style="font-weight:600;">v1.3.1</div><div style="font-size:12px;color:var(--text-tertiary);">5 jam lalu</div></div></div>
+              <span class="fv-badge fv-badge--accent fv-badge--dot">Draft</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;align-items:center;gap:10px;"><i class="bi bi-clock" style="color:var(--text-tertiary);font-size:18px;"></i><div><div style="font-weight:600;">v1.3.0</div><div style="font-size:12px;color:var(--text-tertiary);">Kemarin</div></div></div>
+              <span class="fv-badge fv-badge--warning fv-badge--dot">Review</span>
+            </div>
+          </div>
         </div>
-        <div class="fv-tab-panel" data-fv-panel="t3" style="padding:20px 0;">Auto-checkpoint setiap 50 perubahan.</div>
+        <div class="fv-tab-panel" data-fv-panel="t2" style="padding:20px 0;">
+          <div style="display:flex;gap:12px;">
+            <div class="fv-card" style="flex:1;padding:16px;text-align:center;cursor:pointer;border:2px solid var(--accent);">
+              <i class="bi bi-graph-up-arrow" style="font-size:24px;color:var(--accent);display:block;margin-bottom:8px;"></i>
+              <div style="font-weight:600;">Optimis</div>
+              <div style="font-size:12px;color:var(--text-tertiary);margin-top:4px;">Revenue +25%</div>
+            </div>
+            <div class="fv-card" style="flex:1;padding:16px;text-align:center;cursor:pointer;">
+              <i class="bi bi-graph-down-arrow" style="font-size:24px;color:var(--danger);display:block;margin-bottom:8px;"></i>
+              <div style="font-weight:600;">Pessimis</div>
+              <div style="font-size:12px;color:var(--text-tertiary);margin-top:4px;">Revenue -10%</div>
+            </div>
+            <div class="fv-card" style="flex:1;padding:16px;text-align:center;cursor:pointer;">
+              <i class="bi bi-arrow-left-right" style="font-size:24px;color:var(--warning);display:block;margin-bottom:8px;"></i>
+              <div style="font-weight:600;">Netral</div>
+              <div style="font-size:12px;color:var(--text-tertiary);margin-top:4px;">Revenue +5%</div>
+            </div>
+          </div>
+        </div>
+        <div class="fv-tab-panel" data-fv-panel="t3" style="padding:20px 0;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div><div style="font-weight:600;">Auto-checkpoint</div><div style="font-size:12px;color:var(--text-tertiary);">Simpan otomatis setiap perubahan</div></div>
+              <div class="fv-switch" onclick="this.classList.toggle('active')" style="cursor:pointer;"><div class="fv-switch__track"><div class="fv-switch__thumb"></div></div></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div><div style="font-weight:600;">Notifikasi</div><div style="font-size:12px;color:var(--text-tertiary);">Alert saat checkpoint baru</div></div>
+              <div class="fv-switch active" onclick="this.classList.toggle('active')" style="cursor:pointer;"><div class="fv-switch__track"><div class="fv-switch__thumb"></div></div></div>
+            </div>
+            <div><label class="fv-label">Interval (menit)</label><input class="fv-input" type="number" value="30" style="max-width:120px;"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="component-block__code"><div class="code-panel">
