@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm turbo build --filter=finversion && rm -rf dist && cp -r apps/finversion/dist dist",
+  "buildCommand": "pnpm turbo build --filter=finversion",
   "outputDirectory": "dist",
   "installCommand": "pnpm install",
   "framework": null
