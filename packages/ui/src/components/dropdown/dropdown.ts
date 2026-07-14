@@ -40,13 +40,17 @@ export function Dropdown(props: DropdownProps): HTMLDivElement {
   wrapper.appendChild(trigger)
   wrapper.appendChild(menu)
 
-  trigger.addEventListener('click', () => {
-    wrapper.classList.toggle('open')
-  })
-
-  document.addEventListener('click', (e) => {
+  const handleClickOutside = (e: MouseEvent) => {
     if (!wrapper.contains(e.target as Node)) {
       wrapper.classList.remove('open')
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }
+
+  trigger.addEventListener('click', () => {
+    wrapper.classList.toggle('open')
+    if (wrapper.classList.contains('open')) {
+      document.addEventListener('click', handleClickOutside)
     }
   })
 

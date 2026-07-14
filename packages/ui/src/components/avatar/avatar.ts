@@ -19,6 +19,10 @@ export function Avatar(props: AvatarProps): HTMLDivElement {
     const img = document.createElement('img')
     img.src = src
     img.alt = initials
+    img.addEventListener('error', () => {
+      img.remove()
+      avatar.textContent = initials
+    })
     avatar.appendChild(img)
   } else {
     avatar.textContent = initials

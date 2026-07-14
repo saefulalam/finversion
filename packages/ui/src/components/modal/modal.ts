@@ -87,6 +87,7 @@ export function Modal(props: ModalProps): ModalInstance {
 
   function close() {
     overlay.classList.remove('active')
+    document.removeEventListener('keydown', handleEscape)
     setTimeout(() => {
       if (overlay.parentNode) {
         overlay.parentNode.removeChild(overlay)

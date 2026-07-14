@@ -13,6 +13,7 @@ export function Alert(props: AlertProps): HTMLDivElement {
 
   const alert = document.createElement('div')
   alert.className = mergeClasses('fv-alert', `fv-alert--${variant}`)
+  alert.setAttribute('role', 'alert')
 
   const icon = document.createElement('i')
   icon.className = `bi bi-${variant === 'info' ? 'info-circle' : variant === 'success' ? 'check-circle' : variant === 'warning' ? 'exclamation-triangle' : 'x-circle'}`

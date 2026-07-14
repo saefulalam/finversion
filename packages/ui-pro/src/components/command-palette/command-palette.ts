@@ -22,6 +22,7 @@ export function CommandPalette(props: CommandPaletteProps): HTMLElement {
   input.type = 'text'
   input.placeholder = placeholder
   input.className = 'fv-command-palette__input'
+  input.setAttribute('autocomplete', 'off')
 
   searchWrap.appendChild(input)
   container.appendChild(searchWrap)
@@ -29,6 +30,7 @@ export function CommandPalette(props: CommandPaletteProps): HTMLElement {
   // Results list
   const results = document.createElement('div')
   results.className = 'fv-command-palette__results'
+  results.setAttribute('role', 'listbox')
   container.appendChild(results)
 
   // Filter and render
@@ -54,6 +56,8 @@ export function CommandPalette(props: CommandPaletteProps): HTMLElement {
       filteredItems.forEach(item => {
         const itemEl = document.createElement('div')
         itemEl.className = 'fv-command-palette__item'
+        itemEl.setAttribute('role', 'option')
+        itemEl.setAttribute('tabindex', '-1')
 
         const label = document.createElement('span')
         label.className = 'fv-command-palette__item-label'
@@ -97,14 +101,27 @@ export function CommandPalette(props: CommandPaletteProps): HTMLElement {
   })
 
   // Keyboard navigation
+  let focusedIndex = -1
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       container.classList.remove('active')
+      return
     }
+
+    const items = results.querySelectorAll('.fv-command-palette__item')
     if (e.key === 'ArrowDown') {
       e.preventDefault()
-      const firstItem = results.querySelector('.fv-command-palette__item') as HTMLElement
-      if (firstItem) firstItem.focus()
+      focusedIndex = Math.min(focusedIndex + 1, items.length - 1)
+      items[focusedIndex]?.focus()
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      focusedIndex = Math.max(focusedIndex - 1, 0)
+      items[focusedIndex]?.focus()
+    } else if (e.key === 'Enter') {
+      e.preventDefault()
+      if (focusedIndex >= 0 && focusedIndex < items.length) {
+        items[focusedIndex].click()
+      }
     }
   })
 

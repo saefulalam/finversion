@@ -18,10 +18,14 @@ export function Sidebar(props: SidebarProps): HTMLElement {
 
   const nav = document.createElement('nav')
   nav.className = 'fv-sidebar'
+  nav.setAttribute('role', 'navigation')
 
   items.forEach(item => {
     const itemEl = document.createElement('div')
     itemEl.className = mergeClasses('fv-tree-item', item.id === activeId && 'active')
+    if (item.id === activeId) {
+      itemEl.setAttribute('aria-current', 'page')
+    }
 
     if (item.icon) {
       const icon = document.createElement('i')

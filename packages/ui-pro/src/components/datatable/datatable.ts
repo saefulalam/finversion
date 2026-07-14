@@ -1,15 +1,12 @@
 import { checkPro } from '../../license'
 import type { DataTableProps, Column } from './types'
 
-export function DataTable<T extends Record<string, any>>(props: DataTableProps<T>): HTMLTableElement {
+export function DataTable<T extends Record<string, any>>(props: DataTableProps<T>): HTMLElement {
   if (!checkPro()) {
-    const div = document.createElement('div')
-    div.className = 'fv-pro-required'
-    div.textContent = '[FV-UI Pro] License required. Get yours at fv-ui.dev/pro'
-    // Convert to table-like element
-    const table = document.createElement('table')
-    table.appendChild(div)
-    return table
+    const wrapper = document.createElement('div')
+    wrapper.className = 'fv-pro-required'
+    wrapper.textContent = '[FV-UI Pro] License required. Get yours at fv-ui.dev/pro'
+    return wrapper
   }
 
   const {
@@ -28,8 +25,11 @@ export function DataTable<T extends Record<string, any>>(props: DataTableProps<T
   let sortDirection: 'asc' | 'desc' = 'asc'
   let filterQuery = ''
 
+  const wrapper = document.createElement('div')
+  wrapper.className = 'fv-datatable'
+
   const table = document.createElement('table')
-  table.className = 'fv-datatable'
+  table.className = 'fv-datatable__table'
 
   // Create thead
   const thead = document.createElement('thead')
@@ -60,6 +60,8 @@ export function DataTable<T extends Record<string, any>>(props: DataTableProps<T
   // Create tbody
   const tbody = document.createElement('tbody')
   table.appendChild(tbody)
+
+  wrapper.appendChild(table)
 
   // Filter function
   function filterData(data: T[]): T[] {
@@ -159,8 +161,8 @@ export function DataTable<T extends Record<string, any>>(props: DataTableProps<T
     paginationDiv.appendChild(pageIndicator)
     paginationDiv.appendChild(nextBtn)
 
-    table.parentElement?.appendChild(paginationDiv)
+    wrapper.appendChild(paginationDiv)
   }
 
-  return table
+  return wrapper
 }

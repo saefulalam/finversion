@@ -37,11 +37,13 @@ export function Tabs(props: TabsProps): HTMLDivElement {
       tabButtons.forEach(b => b.classList.remove('active'))
       btn.classList.add('active')
 
-      content.innerHTML = ''
+      while (content.firstChild) {
+        content.removeChild(content.firstChild)
+      }
       if (typeof tab.content === 'string') {
         content.textContent = tab.content
       } else {
-        content.appendChild(tab.content)
+        content.appendChild(tab.content.cloneNode(true))
       }
 
       if (onChange) onChange(tab.id)
