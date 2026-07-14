@@ -49,3 +49,6 @@ export type { CheckboxProps } from './components/checkbox'
 
 export { Sidebar } from './components/sidebar'
 export type { SidebarProps, SidebarItem } from './components/sidebar'
+
+export { Rating } from './components/rating'
+export type { RatingProps } from './components/rating'
