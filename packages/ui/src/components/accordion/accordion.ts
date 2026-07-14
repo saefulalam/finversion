@@ -29,7 +29,7 @@ export function Accordion(props: AccordionProps): HTMLDivElement {
 
     const content = document.createElement('div')
     content.className = 'fv-accordion__content'
-    content.setAttribute('hidden', '')
+    content.setAttribute('aria-hidden', 'true')
 
     const body = document.createElement('div')
     body.className = 'fv-accordion__body'
@@ -43,11 +43,7 @@ export function Accordion(props: AccordionProps): HTMLDivElement {
     trigger.addEventListener('click', () => {
       const isOpen = itemEl.classList.toggle('open')
       trigger.setAttribute('aria-expanded', String(isOpen))
-      if (isOpen) {
-        content.removeAttribute('hidden')
-      } else {
-        content.setAttribute('hidden', '')
-      }
+      content.setAttribute('aria-hidden', String(!isOpen))
     })
 
     itemEl.appendChild(trigger)

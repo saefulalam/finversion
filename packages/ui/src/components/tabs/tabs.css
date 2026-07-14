@@ -37,10 +37,26 @@
   padding: 20px;
   margin-top: 12px;
   background: var(--bg-card);
-  backdrop-filter: blur(20px) saturate(200%);
+  backdrop-filter: blur(20px) saturate(180%);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-inner);
   box-shadow: var(--shadow-spatial-card);
+}
+
+.fv-tab-panel {
+  display: none;
+}
+
+.fv-tab-panel.active {
+  display: block;
+}
+
+[data-fv-theme="dark"] .fv-tabs {
+  border: 1px solid var(--border-outer);
+}
+
+[data-fv-theme="dark"] .fv-tabs__content {
+  border: 1px solid var(--border-outer);
 }
 
 [data-fv-theme="dark"] .fv-tabs {

@@ -3,15 +3,19 @@ import { mergeClasses } from '@fv-ui/shared'
 export interface PinInputProps {
   length?: number
   mask?: boolean
+  size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
   onChange?: (value: string) => void
 }
 
 export function PinInput(props: PinInputProps): HTMLDivElement {
-  const { length = 4, mask = false, disabled = false, onChange } = props
+  const { length = 4, mask = false, size = 'md', disabled = false, onChange } = props
 
   const wrapper = document.createElement('div')
-  wrapper.className = 'fv-pin-input'
+  wrapper.className = mergeClasses(
+    'fv-pin-input',
+    size !== 'md' && `fv-pin-input--${size}`
+  )
 
   const fields: HTMLInputElement[] = []
 
@@ -25,6 +29,11 @@ export function PinInput(props: PinInputProps): HTMLDivElement {
 
     input.addEventListener('input', () => {
       input.value = input.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 1)
+      if (input.value) {
+        input.classList.add('fv-pin-input__field--filled')
+      } else {
+        input.classList.remove('fv-pin-input__field--filled')
+      }
       if (input.value && i < length - 1) {
         fields[i + 1].focus()
       }
@@ -53,6 +62,11 @@ export function PinInput(props: PinInputProps): HTMLDivElement {
       text.split('').forEach((char, idx) => {
         if (idx + i < length) {
           fields[idx + i].value = char
+          if (char) {
+            fields[idx + i].classList.add('fv-pin-input__field--filled')
+          } else {
+            fields[idx + i].classList.remove('fv-pin-input__field--filled')
+          }
         }
       })
       const lastIdx = Math.min(i + text.length - 1, length - 1)

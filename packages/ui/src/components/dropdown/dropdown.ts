@@ -31,6 +31,7 @@ export function Dropdown(props: DropdownProps): HTMLDivElement {
 
     btn.addEventListener('click', () => {
       wrapper.classList.remove('open')
+      document.removeEventListener('click', handleClickOutside)
       if (item.onClick) item.onClick()
     })
 

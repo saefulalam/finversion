@@ -17,12 +17,14 @@ export interface MultiSelectProps {
 export function MultiSelect(props: MultiSelectProps): HTMLDivElement {
   const {
     options,
-    value = [],
+    value: initialValue = [],
     maxSelected,
     searchable = true,
     disabled = false,
     onChange
   } = props
+
+  let currentValue = [...initialValue]
 
   const wrapper = document.createElement('div')
   wrapper.className = mergeClasses(
@@ -33,17 +35,22 @@ export function MultiSelect(props: MultiSelectProps): HTMLDivElement {
   const input = document.createElement('input')
   input.type = 'text'
   input.className = 'fv-multi-select__input'
-  input.placeholder = value.length === 0 ? 'Pilih...' : ''
-  input.disabled = disabled || (maxSelected !== undefined && value.length >= maxSelected)
+  input.placeholder = currentValue.length === 0 ? 'Pilih...' : ''
+  input.disabled = disabled || (maxSelected !== undefined && currentValue.length >= maxSelected)
   input.setAttribute('autocomplete', 'off')
 
   const dropdown = document.createElement('div')
   dropdown.className = 'fv-multi-select__dropdown'
   dropdown.style.display = 'none'
 
+  function updateInputState() {
+    input.placeholder = currentValue.length === 0 ? 'Pilih...' : ''
+    input.disabled = disabled || (maxSelected !== undefined && currentValue.length >= maxSelected)
+  }
+
   function renderTags() {
     wrapper.querySelectorAll('.fv-multi-select__tag').forEach(t => t.remove())
-    value.forEach(val => {
+    currentValue.forEach(val => {
       const opt = options.find(o => o.value === val)
       if (!opt) return
 
@@ -60,11 +67,10 @@ export function MultiSelect(props: MultiSelectProps): HTMLDivElement {
       remove.innerHTML = '&times;'
       remove.addEventListener('click', (e) => {
         e.stopPropagation()
-        const newVal = value.filter(v => v !== val)
-        if (onChange) onChange(newVal)
+        currentValue = currentValue.filter(v => v !== val)
+        if (onChange) onChange(currentValue)
         renderTags()
-        input.placeholder = newVal.length === 0 ? 'Pilih...' : ''
-        input.disabled = disabled || (maxSelected !== undefined && newVal.length >= maxSelected)
+        updateInputState()
       })
       tag.appendChild(remove)
 
@@ -76,7 +82,7 @@ export function MultiSelect(props: MultiSelectProps): HTMLDivElement {
     dropdown.innerHTML = ''
     const filtered = options.filter(o =>
       o.label.toLowerCase().includes(query.toLowerCase()) &&
-      !value.includes(o.value)
+      !currentValue.includes(o.value)
     )
 
     if (filtered.length === 0) {
@@ -90,11 +96,11 @@ export function MultiSelect(props: MultiSelectProps): HTMLDivElement {
         item.className = 'fv-multi-select__option'
         item.textContent = opt.label
         item.addEventListener('click', () => {
-          if (onChange) onChange([...value, opt.value])
+          currentValue = [...currentValue, opt.value]
+          if (onChange) onChange(currentValue)
           renderTags()
           input.value = ''
-          input.placeholder = ''
-          input.disabled = disabled || (maxSelected !== undefined && value.length + 1 >= maxSelected)
+          updateInputState()
           dropdown.style.display = 'none'
         })
         dropdown.appendChild(item)

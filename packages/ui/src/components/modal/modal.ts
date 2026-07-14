@@ -74,20 +74,23 @@ export function Modal(props: ModalProps): ModalInstance {
     if (e.target === overlay) close()
   })
 
-  // Close on Escape key
-  const handleEscape = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') close()
-  }
-  document.addEventListener('keydown', handleEscape)
+  let handleEscape: ((e: KeyboardEvent) => void) | undefined
 
   function open() {
     overlay.classList.add('active')
     document.body.appendChild(overlay)
+    handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close()
+    }
+    document.addEventListener('keydown', handleEscape)
   }
 
   function close() {
     overlay.classList.remove('active')
-    document.removeEventListener('keydown', handleEscape)
+    if (handleEscape) {
+      document.removeEventListener('keydown', handleEscape)
+      handleEscape = undefined
+    }
     setTimeout(() => {
       if (overlay.parentNode) {
         overlay.parentNode.removeChild(overlay)

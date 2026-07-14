@@ -17,18 +17,16 @@
   color: var(--text-primary);
   font-size: 13px;
   line-height: 1.5;
-  animation: fv-popover-enter 150ms ease-out;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 150ms ease-out, transform 150ms ease-out, visibility 150ms;
 }
 
-@keyframes fv-popover-enter {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.fv-popover__content.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .fv-popover__title {

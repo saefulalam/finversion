@@ -2,7 +2,7 @@ import { mergeClasses } from '@fv-ui/shared'
 
 export interface BadgeProps {
   children: string
-  variant?: 'accent' | 'success' | 'warning' | 'danger' | 'outline'
+  variant?: 'accent' | 'success' | 'warning' | 'danger' | 'outline-accent' | 'outline-success' | 'outline-warning' | 'outline-danger'
   dot?: boolean
   count?: boolean
 }
@@ -13,7 +13,7 @@ export function Badge(props: BadgeProps): HTMLSpanElement {
   const badge = document.createElement('span')
   badge.className = mergeClasses(
     'fv-badge',
-    variant !== 'outline' && `fv-badge--${variant}`,
+    `fv-badge--${variant}`,
     dot && 'fv-badge--dot',
     count && 'fv-badge--count'
   )

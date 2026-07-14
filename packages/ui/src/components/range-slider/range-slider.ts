@@ -5,6 +5,7 @@ export interface RangeSliderProps {
   max?: number
   value?: [number, number]
   step?: number
+  size?: 'sm' | 'md' | 'lg'
   disabled?: boolean
   onChange?: (value: [number, number]) => void
 }
@@ -15,12 +16,17 @@ export function RangeSlider(props: RangeSliderProps): HTMLDivElement {
     max = 100,
     value = [25, 75],
     step = 1,
+    size = 'md',
     disabled = false,
     onChange
   } = props
 
   const wrapper = document.createElement('div')
-  wrapper.className = mergeClasses('fv-range-slider', disabled && 'fv-range-slider--disabled')
+  wrapper.className = mergeClasses(
+    'fv-range-slider',
+    size !== 'md' && `fv-range-slider--${size}`,
+    disabled && 'fv-range-slider--disabled'
+  )
 
   const track = document.createElement('div')
   track.className = 'fv-range-slider__track'

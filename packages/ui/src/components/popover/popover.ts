@@ -17,7 +17,6 @@ export function Popover(props: PopoverProps): HTMLDivElement {
   const content = document.createElement('div')
   content.className = 'fv-popover__content'
   content.setAttribute('role', 'dialog')
-  content.style.display = 'none'
 
   if (title) {
     const titleEl = document.createElement('div')
@@ -42,33 +41,33 @@ export function Popover(props: PopoverProps): HTMLDivElement {
     const contentRect = content.getBoundingClientRect()
     const gap = 8
 
-    content.style.position = 'absolute'
-    content.style.bottom = `${window.innerHeight - triggerRect.top + gap}px`
-    content.style.left = '0px'
-    content.style.right = '0px'
-
     if (align === 'start') {
-      content.style.left = '0px'
+      content.style.left = `${triggerRect.left}px`
     } else if (align === 'end') {
-      content.style.right = '0px'
+      content.style.left = `${triggerRect.right - contentRect.width}px`
     } else {
       content.style.left = `${triggerRect.left + triggerRect.width / 2 - contentRect.width / 2}px`
     }
+
+    content.style.top = `${triggerRect.bottom + gap}px`
+    content.style.right = 'auto'
   }
 
   function open() {
     if (disabled) return
-    content.style.display = 'block'
     wrapper.appendChild(content)
     position()
+    requestAnimationFrame(() => {
+      content.classList.add('active')
+    })
   }
 
   function close() {
-    content.style.display = 'none'
+    content.classList.remove('active')
   }
 
   function toggle() {
-    if (content.style.display === 'block') {
+    if (content.classList.contains('active')) {
       close()
     } else {
       open()
@@ -87,7 +86,7 @@ export function Popover(props: PopoverProps): HTMLDivElement {
   }
 
   trigger.addEventListener('click', () => {
-    if (content.style.display === 'block') {
+    if (content.classList.contains('active')) {
       setTimeout(() => {
         document.addEventListener('click', handleClickOutside)
       }, 0)

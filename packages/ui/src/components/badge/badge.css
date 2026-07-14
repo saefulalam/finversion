@@ -32,3 +32,9 @@
   border-radius: 50%;
   background: currentColor;
 }
+.fv-badge--outline {
+  background: transparent;
+  border: 1.5px solid var(--text-secondary);
+  color: var(--text-secondary);
+  box-shadow: none;
+}
