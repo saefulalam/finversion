@@ -114,6 +114,44 @@
   font-size: 17px;
 }
 
+.fv-multi-select__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-spatial-card);
+  z-index: 100;
+  padding: 4px;
+}
+
+.fv-multi-select__option {
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.15s;
+}
+
+.fv-multi-select__option:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.fv-multi-select__empty {
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
 [data-fv-theme="dark"] .fv-multi-select {
   border: 1px solid var(--border-outer);
 }

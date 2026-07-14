@@ -1,0 +1,47 @@
+.fv-popover {
+  position: relative;
+  display: inline-flex;
+}
+
+.fv-popover__content {
+  position: fixed;
+  z-index: 1000;
+  min-width: 200px;
+  max-width: 320px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid var(--border-inner);
+  box-shadow: var(--shadow-modal);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.5;
+  animation: fv-popover-enter 150ms ease-out;
+}
+
+@keyframes fv-popover-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fv-popover__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.fv-popover__desc {
+  color: var(--text-secondary);
+}
+
+[data-fv-theme="dark"] .fv-popover__content {
+  border: 1px solid var(--border-outer);
+}

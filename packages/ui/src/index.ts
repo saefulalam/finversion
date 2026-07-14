@@ -52,3 +52,21 @@ export type { SidebarProps, SidebarItem } from './components/sidebar'
 
 export { Rating } from './components/rating'
 export type { RatingProps } from './components/rating'
+
+export { RangeSlider } from './components/range-slider'
+export type { RangeSliderProps } from './components/range-slider'
+
+export { MultiSelect } from './components/multi-select'
+export type { MultiSelectProps } from './components/multi-select'
+
+export { PinInput } from './components/pin-input'
+export type { PinInputProps } from './components/pin-input'
+
+export { NumberInput } from './components/number-input'
+export type { NumberInputProps } from './components/number-input'
+
+export { PasswordInput } from './components/password-input'
+export type { PasswordInputProps } from './components/password-input'
+
+export { Popover } from './components/popover'
+export type { PopoverProps } from './components/popover'
